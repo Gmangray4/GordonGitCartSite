@@ -1,0 +1,53 @@
+
+h2{
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+
+table{
+  border: solid;
+  align: left;
+  align-content;
+  width: 90%;
+  margin: 1em;
+}
+
+th{
+  text-align: left;
+}
+
+div{
+background-color: none;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: left;
+position: static;
+display: flow-root;
+border: none;
+border-color: black;
+margin: 0;
+z-index: 0;
+padding: 0;
+overflow-x: hidden;
+overflow-y: hidden;
+width: 50%;
+height: 90vh;
+float: left;
+}
+
+div.left{
+background-color: red;
+}
+
+div.right{
+background-color: blue;
+}
+
+div.description{
+  background-color: Green;
+  width: 85%;
+  height: 70%;
+  margin: 0% 10% 30% 10%;
+}
