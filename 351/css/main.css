@@ -1,28 +1,41 @@
+@charset 'UTF-8';
+
+@font-face
+	{
+	  font-family: font;
+	  src: url(../fonts/Orbitron/Orbitron-Regular.ttf);
+	}
 
 body{
   background-color: black;
+  font-family: font;
 }
 
 
 h1{
-    text-align: center;
+    text-align: left;
+    margin: 0px 15px;
     color: Green;
 }
 
 h2{
   text-align: left;
-  margin: 0.1px;
+  margin: 0px 15px;
   color: Green;
 }
 h3{
-  text-align: center;
+  text-align: left;
+  margin: 15px;
   color: Green;
 }
 
 p{
-  text-align: left;
-  margin: 2px;
+  font-family: font;
+  font-size: auto;
+  text-align:left;
+  margin: 5px 15px;
   color: Green;
+
 }
 
 table{
@@ -73,16 +86,17 @@ float: left;
 }
 
 div.title{
-background-color: Gray;
+
 }
 
 div.description{
+
 }
 
 div.left{
-background-color: red;
+
 }
 
 div.right{
-background-color: blue;
+
 }
