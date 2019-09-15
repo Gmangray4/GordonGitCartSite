@@ -11,31 +11,32 @@ body{
   font-family: font;
 }
 
-
-h1{
+h1, h2, h3{
     text-align: left;
     margin: 0px 15px;
-    color: Green;
+    color: #6aef15;
+}
+h1 {
+	color: #44fe65;
 }
 
-h2{
-  text-align: left;
-  margin: 0px 15px;
-  color: Green;
-}
 h3{
-  text-align: left;
   margin: 15px;
-  color: Green;
 }
 
-p{
+p, table, span{
+	  color: #44b3ff;
+}
+
+p, a{
   font-family: font;
   font-size: auto;
   text-align:left;
-  margin: 5px 15px;
-  color: Green;
+  margin: 5px;
+ }
 
+p.description{
+	  margin: 5px 15px;
 }
 
 table{
@@ -44,7 +45,6 @@ table{
   align-content;
   width: 90%;
   margin: 1em;
-  color: Green;
 }
 
 th{
@@ -53,16 +53,19 @@ th{
 }
 
 tr{
+	text-align: left;
   border: solid;
   margin: 2px;
+	border-color: green;
 }
+
 
 header{
   height: 7em;
   margin: 2px;
 }
 
-main {
+main{
   height: 20em;
 }
 
