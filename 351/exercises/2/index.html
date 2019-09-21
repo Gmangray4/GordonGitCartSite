@@ -15,6 +15,8 @@
       background-color: #45391b;
       border: 3px solid #fec02d;}
 
+  #displayText{}
+
   body{
         background:black;}
   .para {color:white;font-size:22pt; background:purple;margin-left: 1%;margin-top: 1%; padding:1%;}
@@ -31,9 +33,54 @@
   }
   </style>
   <script>
+
+
   window.onload = function(){
     console.log("testing");
-  } //on load
+
+    let handleClick = function (){
+      console.log(event)
+      // WHO WAS CLICKED?
+      console.log("target:" + event.target.id);
+      if (event.target.id === 'c') {
+          console.log("Hey C" );
+          displayText.style = "display:inline-block;";
+          displayText.innerText = 'This is Text For Box C';
+      }
+      if (event.target.id === 'd') {
+          console.log("Hey d" );
+          displayText.style = "display:inline-block;";
+          displayText.innerText = 'This is Text For Box D';
+      }
+      if (event.target.id === 'e') {
+          console.log("Hey e" );
+          displayText.style = "display:inline-block;";
+          displayText.innerText = 'This is Text For Box E';
+      }
+      if (event.target.id === 'displayText') {
+          console.log("Hey displayText" );
+          displayText.style = "display: none;";
+          displayText.innerText = null;
+
+      }
+     };
+
+    //add to c element
+     let cBox = document.getElementById('c');
+      cBox.addEventListener('click', handleClick);
+
+      //add to d element
+      let dBox = document.getElementById('d');
+      dBox.addEventListener('click', handleClick);
+
+      let eBox = document.getElementById('e');
+      eBox.addEventListener('click', handleClick);
+
+      let displayText = document.getElementById('displayText');
+      displayText.addEventListener('click', handleClick);
+
+
+      }
 
   </script>
 </head>
