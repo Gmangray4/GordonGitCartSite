@@ -38,6 +38,7 @@
   window.onload = function(){
     console.log("testing");
 
+
     let handleClick = function (){
       console.log(event)
       // WHO WAS CLICKED?
@@ -46,6 +47,7 @@
           console.log("Hey C" );
           displayText.style = "display:inline-block;";
           displayText.innerText = 'This is Text For Box C';
+
       }
       if (event.target.id === 'd') {
           console.log("Hey d" );
@@ -61,23 +63,26 @@
           console.log("Hey displayText" );
           displayText.style = "display: none;";
           displayText.innerText = null;
-
       }
-     };
-
+    };
     //add to c element
      let cBox = document.getElementById('c');
       cBox.addEventListener('click', handleClick);
+      // cBox.addEventListener('mouseover', mouseOver);
+      // cBox.addEventListener('mouseout', mouseOut);
 
       //add to d element
       let dBox = document.getElementById('d');
       dBox.addEventListener('click', handleClick);
 
+
       let eBox = document.getElementById('e');
       eBox.addEventListener('click', handleClick);
 
+
       let displayText = document.getElementById('displayText');
       displayText.addEventListener('click', handleClick);
+
 
 
       }
@@ -86,12 +91,41 @@
 </head>
 <body>
   <div class = "wrapper">
-  <div id = "c" class = "box"></div>
-  <div id = "d" class = "box"></div>
-  <div id = "e" class = "box"></div>
-  <br />
-  <p style = "display:none;" id = "displayText" class = "para"></p>
+  <div id = "c" class = "box" onmouseover="mouseOverC()" onmouseout="mouseOutC()"></div>
+  <div id = "d" class = "box" onmouseover="mouseOverD()" onmouseout="mouseOutD()"></div>
+  <div id = "e" class = "box" onmouseover="mouseOverE()" onmouseout="mouseOutE()"></div>
+  <br/>
+  <p style = "display:none;" id = "displayText" class = "para" onmouseover="mouseOverText()" onmouseout="mouseOutText()"></p>
 </div>
+<script>
+function mouseOverC() {
+  document.getElementById("c").style.opacity = 0.5;
+}
 
+function mouseOutC() {
+  document.getElementById("c").style.opacity = 1;
+}
+function mouseOverD() {
+  document.getElementById("d").style.opacity = 0.5;
+}
+
+function mouseOutD() {
+  document.getElementById("d").style.opacity = 1;
+}
+function mouseOverE() {
+  document.getElementById("e").style.opacity = 0.5;
+}
+
+function mouseOutE() {
+  document.getElementById("e").style.opacity = 1;
+}
+function mouseOverText() {
+  document.getElementById("displayText").style.opacity = 0.5;
+}
+
+function mouseOutText() {
+  document.getElementById("displayText").style.opacity = 1;
+}
+</script>
 </body>
 </html>
