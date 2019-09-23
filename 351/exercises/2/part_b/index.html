@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> EXERCISE 2B </title>
+  <script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js" charset="UTF-8"></script><style>
+
+  .box {
+    width: 10vw; /*(1/10th) viewport width */
+    height: 10vw;
+    margin-left: 1%;
+    margin-top: 1%;
+    display:inline-block;
+  }
+  #c {
+      background-color: #3e181b;
+      border: 3px solid #db1d2d;}
+
+  #d {
+      background-color: #422018;
+      border: 3px solid #f0421c;}
+
+  #e {
+      background-color: #45391b;
+      border: 3px solid #fec02d;}
+
+
+  body{background:black;}
+  .wrapper{
+    margin-left:30%;
+    margin-top:15%;
+  }
+
+  canvas{
+    background:black;
+    width:100%;
+    height:100%;
+  }
+  </style>
+  <script>
+
+
+window.onload = function(){
+
+
+let mouseIn = 'none'; // this variable will keep track of when and if the mouse is within one of the canvas(es)
+
+// this event handler will register in which box is the mouse
+ let mouseoverhandler = function(event){
+  mouseIn = event.target.id;
+  console.log("the mouse is over canvas:: "+mouseIn);
+}
+// this event handler will register that the mouse is no longer over a particular box
+let mouseouthandler = function(event){
+  console.log("the mouse is no longer over canvas:: "+event.target.id);
+ mouseIn = 'none';
+}
+
+/* STEP 1:
+/* THis is showing you how to access the canvas associated with the first box
+It also shows you how to access the associated drawing context
+and adding the relevent event listeners. You can follow this code for
+accessing the other canvases and their associated contexts.
+*/
+
+let canvasAniC = document.getElementById("canvasAniC")
+let canvasAniD = document.getElementById("canvasAniD")
+let canvasAniE = document.getElementById("canvasAniE")
+//get the context
+let contextC = canvasAniC.getContext("2d");
+let contextD = canvasAniD.getContext("2d");
+let contextE = canvasAniE.getContext("2d");
+
+// register event listeners with 1st box
+canvasAniC.addEventListener('mousemove',mouseoverhandler );
+canvasAniC.addEventListener('mouseout',mouseouthandler);
+
+canvasAniD.addEventListener('mousemove',mouseoverhandler );
+canvasAniD.addEventListener('mouseout',mouseouthandler);
+
+canvasAniE.addEventListener('mousemove',mouseoverhandler );
+canvasAniE.addEventListener('mouseout',mouseouthandler);
+
+/*** The lists of objects that will be indide each canvas **/
+let rectList = []; // variable to hold your list of rectangles
+let ellipsesList = []; //variable to hold your list of ellipses
+let freeShapeList = []; //variable to hold your list of free shapes
+
+/* STEP 2:: CREATE 10 RectShapeObject instances and put into the rectList */
+const NUM_RECTS=10;
+for (let i=0; i <  NUM_RECTS;i++){
+  rectList.push(new RectShapeObject(i,i,50,50,contextC,canvasAniC,(i%5)+1,(i%7)+1));
+};
+
+/* STEP 3:: CREATE 10 EllipseShapeObject instances and put into the ellipsesList */
+const NUM_ELLIPSES=10;
+for (let i=0; i <  NUM_ELLIPSES;i++){
+  ellipsesList.push(new EllipseShapeObject(i,i,10,0,Math.PI * 2,50,50,contextD,canvasAniD,(i%5)+1,(i%7)+1));
+
+};
+
+const NUM_FREESHAPE=10;
+/* STEP 4:: CREATE 10 FreeShapeObject instances and put into the freeShapeList */
+for (let i=0; i <  NUM_FREESHAPE;i++){
+  freeShapeList.push(new FreeShapeObject(i,i,10,2,Math.PI,50,50,contextE,canvasAniE,(i%5)+1,(i%7)+1));
+};
+
+
+/* STEP 5:: implement the display and update methods for each shape
+(RectShapeObject,EllipseShapeObject,FreeShapeObject)
+using the Object definitions I have given you as a starting point.
+The animation and design of your shape(s) is up to you */
+
+/**** ANIMATION CODE *****************/
+requestAnimationFrame(animationLoop);
+ /*MAIN ANIMATION LOOP */
+function animationLoop(){
+
+  if(mouseIn ==="canvasAniC"){
+    console.log("over canvas C");
+    // put code here to display and update contents in canvasAniA
+    /* STEP 6:: go through the rectList  and display and update shapes  */
+
+  contextC.clearRect(0,0,canvasAniC.width,canvasAniC.height);
+  for (let i = 0; i < rectList.length; i++) {
+    rectList[i].display();
+    rectList[i].update();
+  }
+
+  }
+  else if(mouseIn ==="canvasAniD"){
+      console.log("over canvas D");
+      // put code here to display and update contents in canvasAniB
+      /* STEP 7:: go through the ellipsesList  and display and update shapes  */
+
+      contextD.clearRect(0,0,canvasAniD.width,canvasAniD.height);
+      for (let i = 0; i < ellipsesList.length; i++) {
+        ellipsesList[i].display();
+        ellipsesList[i].update();
+      }
+
+  }
+  else if(mouseIn ==="canvasAniE"){
+      console.log("over canvas E");
+      // put code here to display and update contents in canvasAniC
+        /* STEP 8:: go through the freeShapeList  and display and update shapes  */
+        contextE.clearRect(0,0,canvasAniE.width,canvasAniE.height);
+        for (let i = 0; i < freeShapeList.length; i++) {
+          freeShapeList[i].display();
+          freeShapeList[i].update();
+        }
+  }
+  requestAnimationFrame(animationLoop);
+}
+
+/***** OBJECT DEFINITIONS  ***********************/
+/* OBJECT DEFINITION FOR A SQUARE OBJECT SHAPE
+constructor takes an initial xpos, ypos, width and height for the shape.
+You also need to give the context and canvas associated
+with the potential instance of this shape
+*/
+
+
+function RectShapeObject(x,y,w,h,context,canvas, speedX,speedY){
+  this.context =context;
+  this.canvas = canvas;
+  this.x =x;
+  this.y =y;
+  this.w=w;
+  this.h=h;
+
+  this.innerW = this.w/2;
+  this.innerH = this.h/2;
+
+  this.innerX = this.x + this.innerW/2;
+  this.innerY = this.y + this.innerH/2;
+
+  this.speedX = speedX;
+  this.speedY= speedY;
+
+  // method to display - needs to be filled in
+  this.display = function(){
+    this.context.fillStyle ="green";
+    // context.fillStyle = "#ff0000"
+  this.context.fillRect(this.x, this.y, this.w, this.h);
+  this.context.clearRect(this.innerX, this.innerY, this.innerW, this.innerH);
+  }
+
+  // method to update (animation) - needs to be filled in
+  this.update = function(){
+    if (this.x +this.w>this.canvas.width || this.x <0) {
+    this.speedX*=-1;
+    }
+
+    if ((this.y+this.h)>this.canvas.height || this.y <0) {
+    this.speedY*=-1;
+    }
+
+      this.x+=this.speedX;
+      this.y+=this.speedY;
+      this.innerX = this.x + this.innerW/2;
+      this.innerY = this.y + this.innerH/2;
+    }
+}
+
+/* OBJECT DEFINITION FOR An Ellipse OBJECT SHAPE
+constructor takes an initial xpos, ypos, width and height for the shape.
+You also need to give the context and canvas associated
+with the potential instance of this shape
+*/
+function EllipseShapeObject(xPos,yPos,radius,startAngle,endAngle,w,h,context,canvas,speedX,speedY){
+  this.context =context;
+  this.canvas = canvas;
+  this.xPos = xPos;
+  this.yPos = yPos;
+  this.radius = radius;
+  this.startAngle = startAngle;
+  this.endAngle = endAngle;
+  this.w=w;
+  this.h=h;
+  context.fillStyle = "black";
+
+  this.innerW = this.w/2;
+  this.innerH = this.h/2;
+
+  this.innerX = this.xPos + this.innerW/2;
+  this.innerY = this.xPos + this.innerH/2;
+
+  this.speedX = speedX;
+  this.speedY= speedY;
+
+  // method to display - needs to be filled in
+  this.display = function(){
+    context.strokeStyle = "yellow"; // change the color we are using
+    context.beginPath();
+    // arc (x,y,radius, startAngle,endAngle,isCounterClockwise)
+    context.arc(this.xPos,this.yPos,this.radius,this.startAngle,this.endAngle, true);
+    context.fill(); // set the fill
+    context.lineWidth=5; //change stroke weight
+    context.stroke(); // set the outline
+
+  this.context.closePath(); //close a path ...
+
+  //second - is just an arc
+  this.context.beginPath();
+  // arc (x,y,radius, startAngle,endAngle,isCounterClockwise)
+  this.context.arc(this.xPos+100,this.yPos+200,this.radius,this.startAngle,this.endAngle - Math.PI, true);
+  this.context.fillStyle = "black"; // change the color we are using
+  this.context.fill(); // set the fill
+  this.context.lineWidth=2; //change stroke weight
+  this.context.strokeStyle = "black"; // change the color we are using
+  this.context.stroke(); // set the outline
+
+  this.context.closePath(); //close a path ...
+  }
+  // method to update (animation) - needs to be filled in
+  this.update = function(){
+
+    if (this.xPos +this.w>this.canvas.width || this.xPos <0) {
+    this.speedX*=-1;
+    }
+
+    if ((this.yPos+this.h)>this.canvas.height || this.yPos <0) {
+    this.speedY*=-1;
+    }
+
+    this.xPos+=this.speedX;
+    this.yPos+=this.speedY;
+    this.innerX = this.xPos + this.innerW/2;
+    this.innerY = this.yPos + this.innerH/2;
+  }
+}
+/* OBJECT DEFINITION FOR A Free OBJECT SHAPE
+constructor takes an initial xpos, ypos, width and height for the shape.
+You also need to give the context and canvas associated
+with the potential instance of this shape
+*/
+function FreeShapeObject(xPos,yPos,radius,startAngle,endAngle,w,h,context,canvas,speedX,speedY){
+  this.context =context;
+  this.canvas = canvas;
+  this.xPos = xPos;
+  this.yPos = yPos;
+  this.radius = radius;
+  this.startAngle = startAngle;
+  this.endAngle = endAngle;
+  this.w=w;
+  this.h=h;
+  context.fillStyle = "black";
+
+  this.innerW = this.w/2;
+  this.innerH = this.h/2;
+
+  this.innerX = this.xPos + this.innerW/2;
+  this.innerY = this.xPos + this.innerH/2;
+
+  this.speedX = speedX;
+  this.speedY= speedY;
+
+  // method to display - needs to be filled in
+  this.display = function(){
+    context.strokeStyle = "orange"; // change the color we are using
+    context.beginPath();
+    // arc (x,y,radius, startAngle,endAngle,isCounterClockwise)
+    context.arc(this.xPos,this.yPos,this.radius,this.startAngle,this.endAngle, true);
+    context.fill(); // set the fill
+    context.lineWidth=5; //change stroke weight
+    context.stroke(); // set the outline
+
+  this.context.closePath(); //close a path ...
+
+  //second - is just an arc
+  this.context.beginPath();
+  // arc (x,y,radius, startAngle,endAngle,isCounterClockwise)
+  this.context.arc(this.xPos+100,this.yPos+200,this.radius,this.startAngle,this.endAngle - Math.PI, true);
+  this.context.fillStyle = "black"; // change the color we are using
+  this.context.fill(); // set the fill
+  this.context.lineWidth=2; //change stroke weight
+  this.context.strokeStyle = "black"; // change the color we are using
+  this.context.stroke(); // set the outline
+
+  this.context.closePath(); //close a path ...
+  }
+  // method to update (animation) - needs to be filled in
+  this.update = function(){
+
+    if (this.xPos +this.w>this.canvas.width || this.xPos <0) {
+    this.speedX*=-1;
+    }
+
+    if ((this.yPos+this.h)>this.canvas.height || this.yPos <0) {
+    this.speedY*=-1;
+    }
+
+    this.xPos+=this.speedX;
+    this.yPos+=this.speedY;
+    this.innerX = this.xPos + this.innerW/2;
+    this.innerY = this.yPos + this.innerH/2;
+  }
+}
+
+
+
+
+
+//
+//
+// // get the canvas
+// let canvas = document.getElementById("testCanvas");
+//
+//get the context
+// let context = canvas.getContext("2d");
+// //would usually be black
+// context.fillStyle = "#8ED6FF"; // change the color we are using
+// // can use properties of the canvas object -> width, height ...
+// //console.log(canvas);
+// // note how we can use variables to generalize...
+// let lineLength = 100;
+// let x1 = canvas.width/2;
+// let y1 =canvas.height/2;
+// let x2 = x1+lineLength;
+// let y2 = canvas.height/2;
+// let x3 = x1+(lineLength/2);
+// let y3 = y1-lineLength;
+//
+// // lets draw a triangle:
+//
+// //The lineTo() method adds a new point and creates a line
+// //TO that point FROM the last specified point in the canvas
+// //(this method does not draw the line) -rather the stroke/fill does.
+// context.beginPath(); //start a path
+// context.moveTo(x1,y1); //where to start drawing
+// context.lineTo(x2,y2); //lineTo(where to go from last...)
+// context.lineTo(x3,y3);
+// context.lineTo(x1,y1);
+//
+// context.fill();
+//
+// context.strokeStyle = "#FFFFFF"; // change the color we are using
+// context.lineWidth =2;
+// context.stroke();
+// context.closePath(); //end a path ...
+// // }
+
+} //on load
+</script>
+
+</head>
+<body>
+  <div class = "wrapper">
+  <div id = "c" class = "box"><canvas id = "canvasAniC"></canvas></div>
+  <div id = "d" class = "box"><canvas id = "canvasAniD"></canvas></div>
+  <div id = "e" class = "box"><canvas id = "canvasAniE"></canvas></div>
+</div>
+
+</body>
+</html>
