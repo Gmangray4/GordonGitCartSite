@@ -11,7 +11,7 @@ body{
   font-family: font;
 }
 
-h1, h2, h3{
+h1, h2, h3, h4{
     text-align: left;
     margin: 0px 15px;
     color: #6aef15;
@@ -23,12 +23,15 @@ h1 {
 h3{
   margin: 15px;
 }
+h4{
+	letter-spacing: 3px;
+}
 
 p, table, span{
 	  color: #44b3ff;
 }
 
-p, a{
+p, a,ol,li{
   font-family: font;
   font-size: auto;
   text-align:left;
@@ -37,6 +40,17 @@ p, a{
 
 p.description{
 	  margin: 5px 15px;
+}
+
+p.propsal{
+	letter-spacing: 3px;
+	padding: 3px;
+}
+
+ol li{
+	color: yellow;
+	letter-spacing: 3px;
+	padding: 3px;
 }
 
 table{
@@ -67,6 +81,7 @@ header{
 
 main{
   height: 20em;
+	margin: 1px;
 }
 
 div{
@@ -86,6 +101,12 @@ overflow-y: hidden;
 width: 50%;
 height: auto;
 float: left;
+}
+
+img{
+	margin-left: 80px;
+	width: 40%;
+	height: 110%;
 }
 
 div.title{
