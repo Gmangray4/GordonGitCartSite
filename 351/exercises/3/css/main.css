@@ -1,0 +1,53 @@
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+h2 {
+  font-size: 2.5em;
+  letter-spacing: -5px;
+  margin-bottom: 10px;
+  color: Red;
+}
+
+h3{
+  font-size: 1em;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 2em;
+  letter-spacing: -5px;
+  margin-bottom: 10px;
+}
+
+section{
+  margin-left:25vw;
+  height: auto;
+  width: auto;
+}
+
+article{
+  height: auto;
+  width: auto;
+
+}
+
+section article {
+  margin-left:2%;
+  margin-right:20%;
+  margin-bottom:2%;
+  background:#b4e4f6;
+  padding:2%;
+}
+
+section p {
+  font-size:1em;
+  font-weight: bold;
+}
+
+#getData{
+  background:orange;
+  width:100px;
+  margin:2%;
+}

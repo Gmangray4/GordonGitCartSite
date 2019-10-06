@@ -1,0 +1,75 @@
+{
+  "Label": "Days Gone to work",
+  "DaysItems":
+  [
+    { "Day": "Day 1",
+      "Going": {
+        "From": "Going",
+        "Metro": "UQUM",
+        "TimeLeft": "6:10am",
+        "Arrived": "6:51am",
+        "Weather": "clear"
+      },
+      "Return":{
+        "From": "Return",
+        "Metro": "Peel",
+        "TimeLeft": "3:50pm",
+        "Arrived": "4:10pm",
+        "Weather": "clear"
+      }
+
+    },
+    { "Day": "Day 2",
+      "Going": {
+        "From": "Going",
+        "Metro": "UQUM",
+        "TimeLeft": "6:10am",
+        "Arrived": "6:51am",
+        "Weather": "clear"
+      },
+
+      "Return":{
+        "From": "Return",
+        "Metro": "Peel",
+        "TimeLeft": "3:50pm",
+        "Arrived": "4:10pm",
+        "Weather": "clear"
+      }
+    },
+    { "Day": "Day 3",
+
+      "Going": {
+        "From": "Going",
+        "Metro": "UQUM",
+        "TimeLeft": "6:10am",
+        "Arrived": "6:51am",
+        "Weather": "clear"
+      },
+
+      "Return":{
+        "From": "Return",
+        "Metro": "Peel",
+        "TimeLeft": "3:50pm",
+        "Arrived": "4:10pm",
+        "Weather": "clear"
+      }
+    },
+    { "Day": "Day 4",
+      "Going": {
+        "From": "Going",
+        "Metro": "UQUM",
+        "TimeLeft": "6:10am",
+        "Arrived": "6:51am",
+        "Weather": "clear"
+      },
+
+      "Return":{
+        "From": "Return",
+        "Metro": "Peel",
+        "TimeLeft": "3:50pm",
+        "Arrived": "4:10pm",
+        "Weather": "clear"
+      }
+    }
+  ]
+ }
