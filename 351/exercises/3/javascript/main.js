@@ -20,7 +20,7 @@ $(document).ready(function() {
           console.log(keyword);
           populateHeader(data);
 
-          if (keyword === "days" || keyword === "day" || keyword === "Day" || keyword === "Days" || keyword === "DAY" || keyword === "DAYS") {
+          if (keyword === "days" || keyword === "day" || keyword === "Day" || keyword === "Days" || keyword === "DAY" || keyword === "DAYS" || keyword === "All" || keyword === "all" || keyword === "ALL" || keyword === "All DAYS" || keyword === "all days" || keyword === "All days") {
             showDays(data);
           }
           if (keyword === "Day 1" || keyword === "day 1" || keyword === "Day 1" || keyword === "Day1" || keyword === "DAY 1" || keyword === "DAY1" || keyword === "day1") {

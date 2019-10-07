@@ -4,71 +4,68 @@
   [
     { "Day": "Day 1",
       "Going": {
-        "From": "Going",
-        "Metro": "UQUM",
-        "TimeLeft": "6:10am",
-        "Arrived": "6:51am",
-        "Weather": "clear"
+        "From": "Going to work.",
+        "Metro": "Metro taken:  Berri-Uqum.",
+        "TimeLeft": "Time left from home: 6:10am.",
+        "Arrived": "Time arrived at work 6:51am.",
+        "Weather": "The weather was clear."
       },
       "Return":{
-        "From": "Return",
-        "Metro": "Peel",
-        "TimeLeft": "3:50pm",
-        "Arrived": "4:10pm",
-        "Weather": "clear"
+        "From": "Returning back home.",
+        "Metro": "Taken Metro Peel.",
+        "TimeLeft": "Time left from work: 3:37pm.",
+        "Arrived": "Time arrived at home: 4:02pm.",
+        "Weather": "The weather was clear."
       }
 
     },
     { "Day": "Day 2",
       "Going": {
-        "From": "Going",
-        "Metro": "UQUM",
-        "TimeLeft": "6:10am",
-        "Arrived": "6:51am",
-        "Weather": "clear"
+        "From": "Going to work.",
+        "Metro": "Metro taken: Berri-Uqum.",
+        "TimeLeft": "Time left from home: 6:34am.",
+        "Arrived": "Time arrived at work 6:52am.",
+        "Weather": "The weather was dark and cloudy."
       },
 
       "Return":{
-        "From": "Return",
-        "Metro": "Peel",
-        "TimeLeft": "3:50pm",
-        "Arrived": "4:10pm",
-        "Weather": "clear"
+        "From": "Returning back home",
+        "Metro": "Taken Metro Peel",
+        "TimeLeft": "Time left from work: 3:31pm.",
+        "Arrived": "Time arrived at home: 3:54:pm.",
+        "Weather": "The weather was clear."
       }
     },
     { "Day": "Day 3",
-
       "Going": {
-        "From": "Going",
-        "Metro": "UQUM",
-        "TimeLeft": "6:10am",
-        "Arrived": "6:51am",
-        "Weather": "clear"
+        "From": "Going to work.",
+        "Metro": "Metro taken: Berri-Uqum.",
+        "TimeLeft": "Time left from home: 6:28am.",
+        "Arrived": "Time arrived at work 6:51am.",
+        "Weather": "The weather was cloudy and wet."
       },
-
       "Return":{
-        "From": "Return",
-        "Metro": "Peel",
-        "TimeLeft": "3:50pm",
-        "Arrived": "4:10pm",
-        "Weather": "clear"
+        "From": "Returning back home.",
+        "Metro": "Taken Metro Bonaventure.",
+        "TimeLeft": "Time left from work: 3:34pm.",
+        "Arrived": "Time arrived at home: 4:02pm.",
+        "Weather": "The weather was cloudy."
       }
     },
     { "Day": "Day 4",
       "Going": {
-        "From": "Going",
-        "Metro": "UQUM",
-        "TimeLeft": "6:10am",
-        "Arrived": "6:51am",
-        "Weather": "clear"
+        "From": "Going to work.",
+        "Metro": "Metro taken: Berri-Uqum.",
+        "TimeLeft": "Time left from home: 6:34am.",
+        "Arrived": "Time arrived at work 6:55am.",
+        "Weather": "The weather was raining."
       },
-
       "Return":{
-        "From": "Return",
-        "Metro": "Peel",
-        "TimeLeft": "3:50pm",
-        "Arrived": "4:10pm",
-        "Weather": "clear"
+        "From": "Returning back home.",
+        "Metro": "Taken Metro Bonaventure.",
+        "TimeLeft": "Time left from work: 3:32pm.",
+        "Arrived": "Time arrived at home: 3:57pm.",
+        "Weather": "The weather was cloudy."
       }
     }
   ]

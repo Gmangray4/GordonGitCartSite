@@ -46,6 +46,10 @@ section p {
   font-weight: bold;
 }
 
+p{
+  margin-left: 10px;
+}
+
 #getData{
   background:orange;
   width:100px;
