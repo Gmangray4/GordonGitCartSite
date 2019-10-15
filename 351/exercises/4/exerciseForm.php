@@ -8,6 +8,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   Get the temperature value (a_temp): is a string so we need to convert to a number using the in built function intval()
   */
 
+
 $temp = $_POST['a_temp'];
 
 $tempIntV = intval($temp);
@@ -47,15 +48,25 @@ $total = (5 / 9) * ($tempIntV - 32);
 
 $email = $_POST['a_email'];
 $name = $_POST['a_name'];
-$msg = "Your convented vaule is ".$total." in ".$tempstate.".".("<br />")."Have a good day.";
+$msg = ("<p class=msg>")."Your convented vaule is ".$total." in ".$tempstate.".".("</p>");
+$msg2 = ("<p class=msg2>")."We are sorry ".$name.".".("</p>");
+$msg3 = ("<p class=msg3>")."Our system could not send anything to ".$email.("</p>");
+$msg4 = ("<p class=msg4>")."Stay Hydrated!".("</p>");
 
-mail($email,$name,$msg);
+// mail($email,$name,$msg);
 
 
   /* Step 4: using the echo() - display a custom message i.e. Dear ... to notify the usewr that t
   hey will get an email with the results.*/
 // echo ($msg);
-echo ('<p class="echoSpam">Your results have been sent to your email! </p>');
+
+
+
+echo($msg);
+echo($msg2);
+echo($msg3);
+echo($msg4);
+
 }
  ?>
 
@@ -88,6 +99,7 @@ echo ('<p class="echoSpam">Your results have been sent to your email! </p>');
 <!-- submit button  -->
  <p><input type = "submit" name = "submit" value = "submit and convert" id =buttonS /></p>
 
+<p class=""></p>
 
 </form>
 </div>

@@ -99,3 +99,31 @@ input.ConvertButt{
   margin-left: 2%;
   width: 10px;
 }
+
+p.msg{
+  font-size: 1.5em;
+  margin-left: 35%;
+  margin-top: 20px;
+  margin-bottom: 2px;
+}
+
+p.msg2{
+  font-size: 1em;
+  margin-left: 43%;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+p.msg3{
+  font-size: 1em;
+  margin-left: 35%;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+p.msg4{
+  font-size: 1em;
+  margin-left: 45%;
+  margin-top: 10px;
+  margin-bottom: 1px;
+}
