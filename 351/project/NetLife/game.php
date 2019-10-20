@@ -7,7 +7,7 @@
   <script src = "javascript/main.js"></script>
 </head>
 <body>
-<div class="main">
+<div id="mainDiv" class="main" >
   <div class="topInfo">
 
   </div>
@@ -60,18 +60,32 @@
 
 <div class="hudHeader">
 
-</div>
 
+<div class="condition">
+  <div class="statusL">
+    <p class="status">Status:</p>
+  </div>
+  <div class="statusR">
+
+<!-- this p tage will update in furtre -->
+    <p class="status">Good.</p>
+  </div>
+
+</div>
+  <button type="button" name="button">AddBug</button>
+</div>
 <div class="hudSections">
 
-<button class="Hudbutt"type="button" name="ButtBrain"> Brain</button>
+<button class="Hudbutt"type="button" name="ButtBrain" onclick="brainCheck()"> Brain</button>
 
 </div>
+
+
 <div class="hudSections">
-<button class="Hudbutt"type="button" name="ButtHeart"> Heart</button>
+<button class="Hudbutt"type="button" name="ButtHeart" onclick="heartCheck()"> Heart</button>
 </div>
 <div class="hudSections">
-<button class="Hudbutt"type="button" name="ButtLungs"> Lungs</button>
+<button class="Hudbutt"type="button" name="ButtLungs" onclick="lungsCheck()"> Lungs</button>
 </div>
 
 </div>

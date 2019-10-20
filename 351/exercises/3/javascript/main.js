@@ -15,7 +15,7 @@ $(document).ready(function() {
     // if (loaded === false) {
       console.log("clicked");
 
-      $.getJSON('loadFiles/days.json', function(data) {
+      $.getJSON('loadFiles/days.json', function(data)
           console.log(data);
           console.log(keyword);
           populateHeader(data);
