@@ -72,7 +72,7 @@
   </div>
 
 </div>
-  <button type="button" name="button">AddBug</button>
+  <button type="button" name="button" onclick="bugsUpdate()">AddBug</button>
 </div>
 <div class="hudSections">
 
