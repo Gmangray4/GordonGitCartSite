@@ -1,6 +1,6 @@
 body {
   max-width: 100%;
-  background-color: black;
+  background-color: white;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -36,34 +36,32 @@ div.titleInfo{
   border-color: red;
   border-style: solid;
   width: 100%;
+  height: 50%;
+  float: left;
+
+}
+
+form{
+  width: 48%;
   height: 30%;
   float: left;
-}
-
-form.main{
-  width: 35%;
-  height: 10%;
-  float: left;
-  margin: 10px;
+  margin: 0;
   border: solid;
   border-color: black;
-  margin-left: 35%;
-}
-
-form.logOut{
-  width: 18%;
-  height: 5%;
-  float: left;
-  margin: 10px;
-  border: solid;
-  border-color: black;
-  margin-left: 45%;
 }
 button.NewGbutt{
   width: 100%;
   height: 100%;
 }
 
+form.Continuebutt{
+  width: 48%;
+  height: 30%;
+  float: left;
+  margin: 0;
+  border: solid;
+  border-color: gray;
+}
 input.Continuebutt{
   width: 100%;
   height: 100%;
@@ -73,37 +71,7 @@ p.titleInfo{
   margin: 10% 30% 10% 30%;
 }
 
-table{
-  border:solid;
-  width: 100%;
-
-}
-tr{
-  border: solid;
-  margin: 2px;
-}
-td{
-  margin: 6px;
-}
-
-
 /* All info for Gamepage */
-div.login{
-  background-color: white;
-  border: solid;
-  border-color: red;
-  border-radius: 10%;
-  height: 32em;
-  width: 85%;
-  margin: 10px;
-  margin-top: 25px;
-  margin-left: 5%;
-  padding: 10px;
-}
-
-h1.login{
-
-}
 
 div.main{
   background-color: gray;
@@ -120,7 +88,7 @@ div.animalDisplay{
   height: 60%;
 }
 
-div.sideinfo {
+div.sideinfo{
   background-color: brown;
   height: 40%;
   width: 24%;
@@ -129,14 +97,14 @@ div.sideinfo {
   position: absolute;
 }
 
-div.table {
+div.table{
   background-color: orange;
   border:solid;
   height: 10%;
   width: 45%;
 }
 
-p.table {
+p.table{
   font-size: 70%;
   margin: 5px;
   float: left;
@@ -148,13 +116,13 @@ div.hud{
   height: 30%;
 }
 
-div.hudHeader {
+div.hudHeader{
   height: 25%;
   width: 100%;
   background: black;
 }
 
-div.condition {
+div.condition{
   background-color: white;
   border-style: solid;
   border-color: red;
@@ -163,23 +131,25 @@ div.condition {
   /* margin-right: 50%; */
 }
 
-div.statusL {
+div.statusL{
   width:50%;
   text-align: right;
-}
 
-div.statusR {
+}
+div.statusR{
   width:50%;
   text-align: left;
+
 }
 
-p.statusCss {
+p.statusCss{
   margin-top: 7px;
   margin-left: 2px;
   font-size: 1.5em;
+
 }
 
-div.hudSections {
+div.hudSections{
   background-color: green;
   height: 60%;
   width: 32%;
@@ -187,20 +157,20 @@ div.hudSections {
   border-color: red;
 }
 
-button.Hudbutt {
+button.Hudbutt{
   background-color: none;
   height: 100%;
   width: 100%;
 }
 
-img.AnimalImg  {
+img.AnimalImg{
   height: 275px;
   width: 300px;
   margin-left: 36%;
   margin-top: 50px;
 }
 
-div.examine  {
+div.examine{
 z-index: 2;
 position: absolute;
 background-color: green;

@@ -84,23 +84,18 @@ header("Location: game.php");
     <title>NetLife</title>
   </head>
 <body>
+
 <div>
-<div class="login">
+<div class="title">
   <div class="titleInfo">
 <p class="titleInfo">Here is the prototype of the game! Click new game to start.</p>
   </div>
-  <form class="main" action="title.php" method="post">
+  <form action="title.php" method="post">
   <input type="hidden" name="submitted" value="submitted">
    <button class="NewGbutt" type="submit" name="NewGameButt">New Game</button>
   </form>
-  <form class="main" action="game.php">
+  <form class="Continuebutt" action="game.php">
     <input class="Continuebutt" type="submit" value="Continue"/>
-</form>
-<form class="main" action="states.php">
-  <input class="Continuebutt" type="submit" value="States"/>
-</form>
-<form class="logOut" action="index.php">
-  <input class="Continuebutt" type="submit" value="Log Out"/>
 </form>
   <!-- <button class="Continuebutt" type="submit" name="NewGameButt">Continue</button> -->
   <!-- class="" action="index.html" -->

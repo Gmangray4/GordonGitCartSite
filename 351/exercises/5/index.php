@@ -15,7 +15,6 @@ $tempIntV = intval($temp);
 // echo ($tempIntV);
 // echo ("<br />");
 
-
   /* Step 2:
   Get the radio button choice (tempChoice) and then create a variable to hold the converted value::
   PLEASE USE THE FORMULA BELOW TO WRITE THE CONVERSION ALGORITHM - DO NOT USE ANY LIBRARY ETC

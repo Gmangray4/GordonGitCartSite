@@ -1,17 +1,16 @@
 <?php
 //check if there has been something posted to the server to be processed
-if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["ajaxTest"]))
-{
+if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["ajaxTest"])) {
  $theFile = fopen("files/testFile.txt", "r") or die("Unable to open file!");
 
 // have  every 3 lines an object ... ]
-$counter =0;
-$numberAttsPerObject =4;
-$outArr = array();
-   while(!feof($theFile)) {
 
+$counter = 0;
+$numberAttsPerObject = 4;
+$outArr = array();
+while(!feof($theFile)) {
    // for every 3rd line  - create a NEW PHP object
-     if($counter%$numberAttsPerObject ==0){
+     if($counter%$numberAttsPerObject ==0) {
        $pData=new stdClass();
      }
      // keep track of the keys ..
@@ -19,17 +18,15 @@ $outArr = array();
      $i = $counter%$numberAttsPerObject;
      // assign ... AND TRIM (remove white space)
      $pData->$i = trim(fgets($theFile));
-
      // if we have JUST completed the 3rd attribute and we are not at 0 -> write the object to the array
-     if($i ==$numberAttsPerObject-1 && $counter!=0){
+     if($i ==$numberAttsPerObject-1 && $counter!=0) {
        array_push($outArr, $pData);
      }
      // increment the counter ...
      $counter = $counter+1;
-
    }
 
-   fclose($theFile);
+  fclose($theFile);
   // var_dump($outArr);
   // Now we want to JSON encode these values to send them to $.ajax success.
   $myJSONObj = json_encode($outArr);
@@ -44,7 +41,7 @@ $outArr = array();
 <head>
 <title>Same Form Ex BUT READ </title>
 <!-- get JQUERY -->
-  <script src = "jquery/jquery-3.4.1.js"></script>
+<script src = "jquery/jquery-3.4.1.js"></script>
 <link rel="stylesheet" type="text/css" href="css/galleryStyle2.css">
 </head>
 <body>
@@ -55,8 +52,6 @@ $outArr = array();
 
 <script>
 // here we put our JQUERY
-
-
 
 $(document).ready (function(){
 console.log("in doc load");
@@ -179,51 +174,34 @@ function RectShapeObject(x,y,w,h,context,canvas, speedX,speedY){
 }
 
 
-
-
-// dddd
-
-function displayResults(parsedJSON){
+function displayResults(parsedJSON) {
   for(let i =0; i < parsedJSON.length; i++){
      console.log(parsedJSON[i]);
-    let cObj  = parsedJSON[i];
-    // let title = $('<h3>').text("OBJECT READ::"+i);
-    // title.appendTo("#result");
-    // for (let property in cObj) {
-
-
-
+     let cObj  = parsedJSON[i];
       let iNum = parseInt(cObj[1]); //Output will be 23.
       console.log(iNum);
-let para2;
-      if(iNum < 0){
+      let para2;
 
+      if(iNum < 0) {
         $("canvas").css("background-color", "blue");
         tempSpeed = 500;
         para2 = $('<p>').text("The cold air makes us slow!");
       }
 
-      if(iNum > 0){
-
+      if(iNum > 0) {
         $("canvas").css("background-color", "red");
         tempSpeed = 10;
         para2 = $('<p>').text("The warm air makes us fast!");
       }
 
-setInterval(function(){animationLoop()},tempSpeed);
+      setInterval(function(){animationLoop()},tempSpeed);
 
-
-let para = $('<p>').text("Your converted result is "+ cObj["1"]+ " in "+cObj["0"]);
-para.appendTo("#result");
-para2.appendTo("#result2");
+      let para = $('<p>').text("Your converted result is "+ cObj["1"]+ " in "+cObj["0"]);
+      para.appendTo("#result");
+      para2.appendTo("#result2");
     // }
   }
 }
-
-
-
-
-
 
 }); //on load
 </script>

@@ -36,9 +36,6 @@ fclose($theFile);
   <script src = "javascript/main.js"></script>
 </head>
 <body>
-  <div class="">
-
-  </div>
 <div id="mainDiv" class="main" >
   <div class="topInfo">
 
@@ -100,11 +97,16 @@ fclose($theFile);
   </div>
 
 <img class="AnimalImg"src="images/placeHolder.jpg" alt="Place Holder image">
+
+
 </div>
+
+
 
 <div class="hud">
 
 <div class="hudHeader">
+
 
 <div class="condition">
   <div class="statusL">
@@ -136,5 +138,11 @@ fclose($theFile);
 
 </div>
 </div>
+
+
+
 </body>
+
+
+
 </html>

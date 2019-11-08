@@ -4,12 +4,6 @@ let hp = 100;
 let $status;
 let death = false;
 
-let peaceDeath;
-let painDeath;
-
-let shortestTimeAlive;
-let longestTimeAlive;
-
 let brainToggle = false;
 let heartToggle = false;
 let lungsToggle = false;
