@@ -4,8 +4,7 @@ let hp = 100;
 let $status;
 let death = false;
 
-let peaceDeath;
-let painDeath;
+let peaceDeath = null;
 
 let shortestTimeAlive;
 let longestTimeAlive;
@@ -23,6 +22,8 @@ let bugsLungs = 0;
 let arrayIdsBrain = [];
 let arrayIdsHeart = [];
 let arrayIdsLungs = [];
+
+let suffering = 0;
 // function AnimalObject(){
 //
 // this.species = species;
@@ -128,6 +129,7 @@ function bugsUpdate(){
   console.log(bugsHeart);
   console.log(bugsLungs);
   console.log(bugsTotal);
+  console.log(suffering);
 }
 
 function bugDisplayB() {
@@ -139,7 +141,7 @@ function bugDisplayB() {
   } else {
     for (var i = 0; i < arrayIdsBrain.length; i++) {
       document.getElementById(arrayIdsBrain[i]).remove();
-      console.log(arrayIdsBrain[i]);
+      // console.log(arrayIdsBrain[i]);
     }
     arrayIdsBrain = [];
   }
@@ -154,7 +156,7 @@ if (heartToggle === true) {
 }else {
   for (var i = 0; i < arrayIdsHeart.length; i++) {
       document.getElementById(arrayIdsHeart[i]).remove();
-      console.log(arrayIdsHeart[i]);
+      // console.log(arrayIdsHeart[i]);
     }
     arrayIdsHeart = [];
 }
@@ -170,7 +172,7 @@ if (lungsToggle === true) {
 }else {
   for (var i = 0; i < arrayIdsLungs.length; i++) {
       document.getElementById(arrayIdsLungs[i]).remove();
-      console.log(arrayIdsLungs[i]);
+      // console.log(arrayIdsLungs[i]);
     }
     arrayIdsLungs = [];
 }
@@ -215,7 +217,7 @@ function bugCreateB(){
       if (index !== -1) arrayIdsBrain.splice(index, 1);
       img.remove();
       bugsBrain -= 1;
-      console.log(bugsBrain);
+      suffering -= 5;
     })
     BrainWindow.appendChild(img);
   }
@@ -261,6 +263,7 @@ function bugCreateH(){
       if (index !== -1) arrayIdsHeart.splice(index, 1);
       img.remove();
       bugsHeart -= 1;
+      suffering -= 5;
     })
     HeartWindow.appendChild(img);
   }
@@ -305,6 +308,7 @@ function bugCreateL(){
       if (index !== -1) arrayIdsLungs.splice(index, 1);
       img.remove();
       bugsLungs -= 1;
+      suffering -= 5;
     })
     LungsWindow.appendChild(img);
   }
@@ -312,8 +316,10 @@ function bugCreateL(){
 
 function damage(){
   hp -= bugsTotal;
+  suffering += bugsTotal*2;
   console.log(hp);
   condition();
+  console.log(suffering);
 }
 
 function condition(){
@@ -329,26 +335,34 @@ $("#status").text('Okay');
   if (hp <= 25) {
 $("#status").text('Poor');
   }
-  if (hp <= 0) {
+  if (hp <= 0 && suffering >= 0) {
 $("#status").text('RIP');
+peaceDeath = true;
 deathWindow();
   }
-  if (hp <= -15) {
+  if (hp <= 0 && suffering <= 1) {
 $("#status").text('RIP');
+peaceDeath = false;
 deathWindow();
   }
 }
 
 function deathWindow(){
   let div = document.createElement("div");
-  div.className = "DeathNPW";
-  let id = "DeathNoPainWindow";
+  div.className = "DeathPW";
+  let id = "DeathWindow";
   div.id = id;
   div.style.zIndex = 10;
   document.getElementById("mainDiv").appendChild(div);
-  death = true;
 
-$("#DeathNoPainWindow").html(
-    '<h2 class="Dead">RIP</h2><img class="DeadImg"src="images/placeHolder.jpg" alt="Place Holder image"><br><p class="DeathNPW"> <?php echo($outArr[0]);?> has dead! <br><br> At least they dead peacefully without any pain!</p>'
+if (peaceDeath == true) {
+  $("#DeathWindow").html(
+      '<h2 class="Dead">RIP</h2><h3  class="Dead"> <?php echo($outArr[0]);?> Passed on Peacefully!</h3><img class="DeadImg"src="images/placeHolder.jpg" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that <?php echo($outArr[0]);?> has moved on peacefully!<br><br>Although <?php echo($outArr[0]);?> maybe gone now, <?php echo($outArr[0]);?> knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+    );
+}
+if (peaceDeath == false) {
+  $("#DeathWindow").html(
+    '<h2 class="Dead">RIP</h2><h3 class="Dead"> <?php echo($outArr[0]);?> Passed on Painfully!</h3><img class="DeadImg"src="images/placeHolder.jpg" alt="Place Holder image"><br><p class="DeathPW"><?php echo($outArr[0]);?> has moved on but not peacefully!<br><br>Unfortunately <?php echo($outArr[0]);?> is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
   );
+}
 }

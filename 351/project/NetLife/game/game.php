@@ -36,17 +36,12 @@ fclose($theFile);
   <script src = "javascript/main.js"></script>
 </head>
 <body>
-  <div class="">
-
-  </div>
 <div id="mainDiv" class="main" >
   <div class="topInfo">
 
   </div>
 <div class="animalDisplay">
-  <!-- <div class="examine">
 
-  </div> -->
   <div class="sideinfo">
 
 <div class="table">
