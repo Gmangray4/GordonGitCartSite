@@ -1,5 +1,7 @@
 let hp = 100;
 
+  // <?php  ?>
+
 //Jquarly elements
 let $status;
 

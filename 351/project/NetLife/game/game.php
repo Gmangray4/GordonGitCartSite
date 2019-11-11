@@ -36,6 +36,7 @@ fclose($theFile);
   <script src = "javascript/main.js"></script>
 </head>
 <body>
+
 <div id="mainDiv" class="main" >
   <div class="topInfo">
 <form class="topInfo" action="title.php"><input class="topInfo" type="submit" value="Home"/></form>
