@@ -35,6 +35,14 @@ div.title{
   height: 90%;
 }
 
+
+div.main{
+  background-image: url("../images/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 div.titleInfo{
   /* background-color: blue; */
   border-color: red;
@@ -43,6 +51,8 @@ div.titleInfo{
   height: 30%;
   float: left;
 }
+
+
 
 form.main{
   width: 35%;
@@ -115,17 +125,29 @@ div.main{
 }
 
 div.topInfo{
-  background-color: purple;
+  /* background-color: purple; */
   height: 10%;
 }
 
+form.topInfo{
+    float: right;
+    margin-top: 1.1em;
+    margin-right: 4.5%;
+    border-style: solid;
+    border-color: red;
+
+}
+input.topInfo{
+    background-color: orange;
+}
+
 div.animalDisplay{
-  background-color: blue;
+
   height: 60%;
 }
 
 div.sideinfo {
-  background-color: brown;
+  background-color: none;
   height: 40%;
   width: 24%;
   margin: 5px;
@@ -134,8 +156,9 @@ div.sideinfo {
 }
 
 div.table {
-  background-color: orange;
+  background-color: white;
   border:solid;
+  border-color: orange;
   height: 10%;
   width: 45%;
 }
@@ -148,14 +171,15 @@ p.table {
 }
 
 div.hud{
-  background-color: yellow;
+  /* background-color: yellow; */
   height: 30%;
+  width: 102.2%;
 }
 
 div.hudHeader {
   height: 25%;
   width: 100%;
-  background: black;
+  /* background: black; */
 }
 
 div.condition {

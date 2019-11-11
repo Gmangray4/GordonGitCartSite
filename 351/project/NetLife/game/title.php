@@ -2,7 +2,7 @@
 
 // https://www.codewall.co.uk/how-to-read-json-file-using-php-examples/
 
-$url = 'loadFiles/animal_test.json'; // path to your JSON file
+$url = 'loadFiles/animal.json'; // path to your JSON file
 $data = file_get_contents($url); // put the contents of the file into a variable
 //echo($data);
 // $characters = json_decode($data); // decode the JSON feed
@@ -34,46 +34,8 @@ fwrite($theFile,$zodiac[rand (0 ,count($zodiac)-1)]."\n");
 fwrite($theFile,"Alive");
 header("Location: game.php");
 }
-// header("Location: read.php");
-
-
-// $strJsonFileContents = file_get_contents("LoadFiles/animal.json");
-//
-// $array = json_decode($strJsonFileContents);
-// var_dump($array);
-//
-// foreach ($array ->AnimalItems->animal as $animal) {
-//
-// // $animal->Dog->Name[1];
-//
-// }
-
-// $animal = $array['AnimalItems'];
-
-
-// $animalName = array_rand($array)
-// echo($animalName);
-
-// if($_SERVER['REQUEST_METHOD'] == 'POST')
-// {
-// $temp = $_POST['a_temp'];
-// $tempstate = $_POST['tempChoice'];
-//
-//
-// $email = $_POST['a_email'];
-// $name = $_POST['a_name'];
-//
-// $theFile = fopen("files/anamalFile.txt", "w") or die("Unable to open");
-// // fwrite($theFile,$tempstate."\n");
-// // fwrite($theFile,$total."\n");
-// // fwrite($theFile,$name."\n");
-// // fwrite($theFile,$email."\n");
-//
-// // header("Location: read.php");
-// // exit;
 // }
 ?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -102,9 +64,6 @@ header("Location: game.php");
 <form class="logOut" action="index.php">
   <input class="Continuebutt" type="submit" value="Log Out"/>
 </form>
-  <!-- <button class="Continuebutt" type="submit" name="NewGameButt">Continue</button> -->
-  <!-- class="" action="index.html" -->
- <!-- <button class="NewGbutt" type="submit" name="NewGameButt">New Game</button> -->
 </div>
 </div>
 </body>

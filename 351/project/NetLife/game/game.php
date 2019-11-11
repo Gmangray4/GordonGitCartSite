@@ -38,7 +38,7 @@ fclose($theFile);
 <body>
 <div id="mainDiv" class="main" >
   <div class="topInfo">
-
+<form class="topInfo" action="title.php"><input class="topInfo" type="submit" value="Home"/></form>
   </div>
 <div class="animalDisplay">
 
@@ -49,7 +49,7 @@ fclose($theFile);
 </div>
 <div id="NameTable" class="table">
   <p class="table">
-<?php echo($outArr[1]); ?>
+<?php echo($outArr[1]);?>
 </p>
 </div>
 <div class="table">
@@ -94,7 +94,7 @@ fclose($theFile);
 </div>
   </div>
 
-<img class="AnimalImg"src="images/placeHolder.jpg" alt="Place Holder image">
+<img class="AnimalImg"src="images/<?php echo($outArr[1]);?>.gif" alt="Place Holder image">
 </div>
 
 <div class="hud">
@@ -116,12 +116,8 @@ fclose($theFile);
   <button style="margin: 0" type="button" name="button" onclick="damage()">Damage</button>
 </div>
 <div class="hudSections">
-
 <button class="Hudbutt"type="button" name="ButtBrain" onclick="brainCheck()"> Brain</button>
-
 </div>
-
-
 <div class="hudSections">
 <button class="Hudbutt"type="button" name="ButtHeart" onclick="heartCheck()"> Heart</button>
 </div>

@@ -11,7 +11,7 @@ try {
                             PDO::ERRMODE_EXCEPTION);
     echo("opened or connected to the database netLife");
     //2
-    $theQuery = 'CREATE TABLE netlifedatebase (AcountID INTEGER PRIMARY KEY NOT NULL, username TEXT, names TEXT, species TEXT, country TEXT, gender TEXT, hobbies TEXT, zodiac TEXT, HP TEXT, bugs TEXT, peaceDeath TEXT, painDeath TEXT, minTime TEXT, maxTime TEXT, lifeStatus TEXT)';
+    $theQuery = 'CREATE TABLE netlifedatebase (AcountID INTEGER PRIMARY KEY NOT NULL, username TEXT, names TEXT, species TEXT, country TEXT, gender TEXT, hobbies TEXT, zodiac TEXT, HP TEXT, bugs TEXT, suffering TEXT, peaceDeath TEXT, painDeath TEXT, minTime TEXT, maxTime TEXT, lifeStatus TEXT)';
     $file_db ->exec($theQuery);
 // if everything executed error less we will arrive at this statement
     echo ("Table netlife datebase created successfully<br\>");

@@ -2,17 +2,21 @@ let hp = 100;
 
 //Jquarly elements
 let $status;
-let death = false;
+
+let alive;
 
 let peaceDeath = null;
 
 let shortestTimeAlive;
 let longestTimeAlive;
 
+// Toggles to let the system undersand which orgin window is currently open.
 let brainToggle = false;
 let heartToggle = false;
 let lungsToggle = false;
 
+
+// keeps track of vrius for the total amount and for each orgin window.
 let bugsTotal = 0;
 let bugsBrain = 0;
 let bugsHeart = 0;
@@ -24,26 +28,16 @@ let arrayIdsHeart = [];
 let arrayIdsLungs = [];
 
 let suffering = 0;
-// function AnimalObject(){
-//
-// this.species = species;
-// this.sex = sex;
-// this.name = name;
-// this.heath = heath;
-// this.hobbies = hobbies;
-// this.birthplace = birthplace;
-// this.appearance = appearance;
-// };
-$(document).ready(setup);
 
+$(document).ready(setup);
 function setup() {
 $status = $('#status');
 condition();
-// deathWindow();
-
 }
 
-function brainCheck(){
+// Brain div window
+function brainCheck() {
+  //makes sure that the other windows are not already open
   if (lungsToggle == true) {
     document.getElementById("LungsWindow").remove();
     lungsToggle = false;
@@ -69,6 +63,7 @@ if(brainToggle == false) {
     bugDisplayB();
   }
 }
+
 function heartCheck(){
   if (lungsToggle == true) {
     document.getElementById("LungsWindow").remove();
@@ -132,6 +127,7 @@ function bugsUpdate(){
   console.log(suffering);
 }
 
+// displaying the bugs in the brain window
 function bugDisplayB() {
   if (brainToggle === true) {
     for (let i = 0; i < bugsBrain; i++) {
@@ -147,6 +143,7 @@ function bugDisplayB() {
   }
 }
 
+// displaying the bugs in the heart window
 function bugDisplayH(){
 if (heartToggle === true) {
   for (let i = 0; i < bugsHeart; i++) {
@@ -162,6 +159,7 @@ if (heartToggle === true) {
 }
 }
 
+// displaying the bugs in the lungs window
 function bugDisplayL(){
 
 if (lungsToggle === true) {
@@ -178,6 +176,7 @@ if (lungsToggle === true) {
 }
 }
 
+// Creats a bug for the brain window if it has any.
 function bugCreateB(){
   if (brainToggle === true) {
   //creates a fixed width and height for the images to appear on scrren
@@ -199,7 +198,7 @@ function bugCreateB(){
 // how an image is created
     let img = document.createElement("img");
     // img.src = "images/memes/" + i + ".png";
-    img.src = "images/placeHolder.jpg";
+    img.src = "images/Virus.gif";
     img.className = "bugCss";
     let id = "img" + i;
     img.id = id;
@@ -223,7 +222,7 @@ function bugCreateB(){
   }
 }
 
-
+// Creats a bug for the heart window if it has any.
 function bugCreateH(){
   if (heartToggle === true) {
   //creates a fixed width and height for the images to appear on scrren
@@ -245,7 +244,7 @@ function bugCreateH(){
 // how an image is created
     let img = document.createElement("img");
     // img.src = "images/memes/" + i + ".png";
-    img.src = "images/placeHolder.jpg";
+    img.src = "images/Virus.gif";
     img.className = "bugCss";
     let id = "img" + i;
     img.id = id;
@@ -269,6 +268,7 @@ function bugCreateH(){
   }
 }
 
+// Creats a bug for the Lungs window if it has any.
 function bugCreateL(){
   if (lungsToggle === true) {
   //creates a fixed width and height for the images to appear on scrren
@@ -290,7 +290,7 @@ function bugCreateL(){
   // how an image is created
     let img = document.createElement("img");
     // img.src = "images/memes/" + i + ".png";
-    img.src = "images/placeHolder.jpg";
+    img.src = "images/Virus.gif";
     img.className = "bugCss";
     let id = "img" + i;
     img.id = id;
@@ -314,6 +314,7 @@ function bugCreateL(){
   }
 }
 
+// function for damage calcatltion with the pet
 function damage(){
   hp -= bugsTotal;
   suffering += bugsTotal*2;
@@ -322,31 +323,31 @@ function damage(){
   console.log(suffering);
 }
 
-function condition(){
-  if (hp >= 81) {
-    $("#status").text('Great');
-  }
-  if (hp <= 80) {
+// function for pets codition.
+function condition() {
+  if (hp >= 51) {
 $("#status").text('Good');
   }
-  if (hp <= 50) {
+  if (hp <= 50 && hp >= 26) {
 $("#status").text('Okay');
   }
-  if (hp <= 25) {
+  if (hp <= 25 && hp >= 1) {
 $("#status").text('Poor');
   }
   if (hp <= 0 && suffering >= 0) {
 $("#status").text('RIP');
 peaceDeath = true;
+alive = false;
 deathWindow();
   }
   if (hp <= 0 && suffering <= 1) {
 $("#status").text('RIP');
 peaceDeath = false;
+alive= false;
 deathWindow();
   }
 }
-
+// function for when the pet dies
 function deathWindow(){
   let div = document.createElement("div");
   div.className = "DeathPW";
