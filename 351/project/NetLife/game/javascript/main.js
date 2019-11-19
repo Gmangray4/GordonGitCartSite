@@ -1,16 +1,18 @@
+
 let hp = 100;
 
   // <?php  ?>
-
 //Jquarly elements
 let $status;
 
 let alive;
-
 let peaceDeath = null;
 
+let peaceDeathCount;
+let painDeadCount;
 let shortestTimeAlive;
 let longestTimeAlive;
+
 
 // Toggles to let the system undersand which orgin window is currently open.
 let brainToggle = false;
@@ -30,11 +32,17 @@ let arrayIdsHeart = [];
 let arrayIdsLungs = [];
 
 let suffering = 0;
+let sufferingState = "fine";
+let lifeState = "good";
 
 $(document).ready(setup);
 function setup() {
 $status = $('#status');
+
+getInitialdata();
 condition();
+bugsUpdate();
+
 }
 
 // Brain div window
@@ -118,15 +126,18 @@ if(lungsToggle == false) {
 
 // update bugs
 function bugsUpdate(){
-  bugsBrain += Math.floor((Math.random() * 4));
-  bugsHeart += Math.floor((Math.random() * 4));
-  bugsLungs += Math.floor((Math.random() * 4));
-  bugsTotal = bugsBrain + bugsHeart + bugsLungs;
-  console.log(bugsBrain);
-  console.log(bugsHeart);
-  console.log(bugsLungs);
-  console.log(bugsTotal);
-  console.log(suffering);
+  // bugsTotal += Math.floor((Math.random() * 4));
+
+  // let bugBucket =  bugsTotal;
+  // bugsBrain += Math.floor((Math.random() * bugBucket));
+  // bugBucket -= bugsBrain;
+  // bugsHeart += Math.floor((Math.random() * bugBucket));
+  // bugBucket -= bugsHeart;
+  // bugsLungs += bugBucket;
+
+
+
+   console.log(suffering);
 }
 
 // displaying the bugs in the brain window
@@ -182,8 +193,8 @@ if (lungsToggle === true) {
 function bugCreateB(){
   if (brainToggle === true) {
   //creates a fixed width and height for the images to appear on scrren
-    let max_width = 400;
-    let max_height = 150;
+    let max_width = 90;
+    let max_height = 400;
     let z = Math.floor((Math.random() * 100) + 1);
     // i = which Meme image to be picked from the image folder
     let i = Math.floor((Math.random() * 118) + 1);
@@ -192,7 +203,7 @@ function bugCreateB(){
     let randomCoordinate = function() {
       var r = [];
       var x = Math.floor(Math.random() * max_width);
-      var y = Math.floor(Math.random() * max_height) + 60;
+      var y = Math.floor(Math.random() * max_height);
       r = [x, y];
       return r;
     };
@@ -210,7 +221,7 @@ function bugCreateB(){
     img.width = imgSize;
     img.style.position = "absolute";
     img.style.top = xy[1] + 'px';
-    img.style.left = xy[0] + 'px';
+    img.style.left = xy[0] + '%';
     img.style.zIndex = z;
     img.addEventListener("click", function() {
       // removes the image from image id array if it is easered
@@ -218,6 +229,7 @@ function bugCreateB(){
       if (index !== -1) arrayIdsBrain.splice(index, 1);
       img.remove();
       bugsBrain -= 1;
+      bugsTotal -= 1;
       suffering -= 5;
     })
     BrainWindow.appendChild(img);
@@ -228,8 +240,8 @@ function bugCreateB(){
 function bugCreateH(){
   if (heartToggle === true) {
   //creates a fixed width and height for the images to appear on scrren
-    let max_width = 400;
-    let max_height = 150;
+  let max_width = 90;
+  let max_height = 400;
     let z = Math.floor((Math.random() * 100) + 1);
     // i = which Meme image to be picked from the image folder
     let i = Math.floor((Math.random() * 118) + 1);
@@ -238,7 +250,7 @@ function bugCreateH(){
     let randomCoordinate = function() {
       var r = [];
       var x = Math.floor(Math.random() * max_width);
-      var y = Math.floor(Math.random() * max_height) + 60;
+      var y = Math.floor(Math.random() * max_height);
       r = [x, y];
       return r;
     };
@@ -256,7 +268,7 @@ function bugCreateH(){
     img.width = imgSize;
     img.style.position = "absolute";
     img.style.top = xy[1] + 'px';
-    img.style.left = xy[0] + 'px';
+    img.style.left = xy[0] + '%';
     img.style.zIndex = z;
     img.addEventListener("click", function() {
       // removes the image from image id array if it is easered
@@ -264,6 +276,7 @@ function bugCreateH(){
       if (index !== -1) arrayIdsHeart.splice(index, 1);
       img.remove();
       bugsHeart -= 1;
+      bugsTotal -= 1;
       suffering -= 5;
     })
     HeartWindow.appendChild(img);
@@ -274,8 +287,8 @@ function bugCreateH(){
 function bugCreateL(){
   if (lungsToggle === true) {
   //creates a fixed width and height for the images to appear on scrren
-    let max_width = 400;
-    let max_height = 150;
+  let max_width = 90;
+  let max_height = 400;
     let z = Math.floor((Math.random() * 100) + 1);
     // i = which Meme image to be picked from the image folder
     let i = Math.floor((Math.random() * 118) + 1);
@@ -284,7 +297,7 @@ function bugCreateL(){
     let randomCoordinate = function() {
       var r = [];
       var x = Math.floor(Math.random() * max_width);
-      var y = Math.floor(Math.random() * max_height) + 60;
+      var y = Math.floor(Math.random() * max_height);
       r = [x, y];
       return r;
     };
@@ -302,7 +315,7 @@ function bugCreateL(){
     img.width = imgSize;
     img.style.position = "absolute";
     img.style.top = xy[1] + 'px';
-    img.style.left = xy[0] + 'px';
+    img.style.left = xy[0] + '%';
     img.style.zIndex = z;
     img.addEventListener("click", function() {
       // removes the image from image id array if it is easered
@@ -310,6 +323,7 @@ function bugCreateL(){
       if (index !== -1) arrayIdsLungs.splice(index, 1);
       img.remove();
       bugsLungs -= 1;
+      bugsTotal -= 1;
       suffering -= 5;
     })
     LungsWindow.appendChild(img);
@@ -327,22 +341,26 @@ function damage(){
 
 // function for pets codition.
 function condition() {
+  sufferCond();
   if (hp >= 51) {
 $("#status").text('Good');
+state = "good";
   }
   if (hp <= 50 && hp >= 26) {
 $("#status").text('Okay');
+state = "okay";
   }
   if (hp <= 25 && hp >= 1) {
 $("#status").text('Poor');
+state = "poor";
   }
-  if (hp <= 0 && suffering >= 0) {
+  if (hp <= 0 && suffering <= 0) {
 $("#status").text('RIP');
 peaceDeath = true;
 alive = false;
 deathWindow();
   }
-  if (hp <= 0 && suffering <= 1) {
+  if (hp <= 0 && suffering >= 1) {
 $("#status").text('RIP');
 peaceDeath = false;
 alive= false;
@@ -365,7 +383,79 @@ if (peaceDeath == true) {
 }
 if (peaceDeath == false) {
   $("#DeathWindow").html(
-    '<h2 class="Dead">RIP</h2><h3 class="Dead"> <?php echo($outArr[0]);?> Passed on Painfully!</h3><img class="DeadImg"src="images/placeHolder.jpg" alt="Place Holder image"><br><p class="DeathPW"><?php echo($outArr[0]);?> has moved on but not peacefully!<br><br>Unfortunately <?php echo($outArr[0]);?> is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+    '<h2 class="Dead">RIP</h2><h3 class="Dead"> <?php echo($outArr[0]);?> Passed on Painfully!</h3><img class="DeadImg"src="images/gravestone.png" alt="Place Holder image"><br><p class="DeathPW"><?php echo($outArr[0]);?> has moved on but not peacefully!<br><br>Unfortunately <?php echo($outArr[0]);?> is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
   );
 }
+}
+
+function sufferCond(){
+  if (suffering >= 1) {
+    aniSuffering = "pain";
+  }else {
+    aniSuffering = "fine";
+  }
+}
+
+function getInitialdata() {
+  console.log("data loading");
+  $.get("game.php", {"sendReason":"gameStart"}, function(response)
+  {
+    console.log(response);
+    let animal = JSON.parse(response);
+    console.log(animal);
+    fillAnimalTable(animal);
+
+  });
+  function fillAnimalTable(animal){
+    $("#animalSpecies").text(animal.species);
+    $("#animalName").text(animal.name);
+    $("#animalCountry").text(animal.country);
+    $("#animalSex").text(animal.gender);
+    $("#animalHobbie").text(animal.hobbies);
+    $("#animalZodiac").text(animal.zodiac);
+
+    hp = parseInt(animal.HP);
+    bugsTotal = parseInt(animal.bugs);
+    suffering = parseInt(animal.suffering);
+    sufferingState = (animal.sufferCon);
+    lifeState = (animal.lifeStatus);
+    alive = (animal.active);
+
+    // bugsUpdate();
+    let bugBucket =  bugsTotal;
+    bugsBrain += Math.floor((Math.random() * bugBucket));
+    bugBucket -= bugsBrain;
+    bugsHeart += Math.floor((Math.random() * bugBucket));
+    bugBucket -= bugsHeart;
+    bugsLungs += bugBucket;
+    console.log(bugsTotal);
+    console.log(bugsBrain);
+    console.log(bugsHeart);
+    console.log(bugsLungs);
+  }
+
+  setInterval(function(){ sendData() }, 3000);
+  function sendData(){
+    console.log("interval running");
+    let dataToSend ={
+      sendReason:"gameUpdate",
+       bugCount:bugsTotal,
+       heath: hp,
+       SuferI:suffering,
+       SuferC:sufferingState,
+       lifeS: lifeState,
+       living:alive
+     };
+    $.get("game.php",  {"sendReason":"gameUpdate","bugsTotal":JSON.stringify(bugsTotal)}, function(response)
+    {
+      console.log(response);
+      //let parsedResponse = JSON.parse(response);
+    //  console.log(parsedResponse);
+    });
+    $.get("game.php",  {"sendReason":"gameUpdate","hp":JSON.stringify(hp)}, function(response){console.log(response);});
+    $.get("game.php",  {"sendReason":"gameUpdate","suffering":JSON.stringify(suffering)}, function(response) { console.log(response);});
+    $.get("game.php",  {"sendReason":"gameUpdate","sufferingState":JSON.stringify(sufferingState)}, function(response){console.log(response);});
+    $.get("game.php",  {"sendReason":"gameUpdate","lifeState":JSON.stringify(lifeState)}, function(response) { console.log(response);});
+    $.get("game.php",  {"sendReason":"gameUpdate","alive":JSON.stringify(alive)}, function(response) { console.log(response);});
+  }
 }

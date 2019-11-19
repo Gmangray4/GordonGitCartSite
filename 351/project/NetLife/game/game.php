@@ -1,31 +1,102 @@
 <?php
- $theFile = fopen("savefile/animalfile.txt", "r") or die("Unable to open file!");
 
- $counter = 0;
- // $numberAttsPerObject = 2;
- $outArr = array();
- while(!feof($theFile)) {
-  $outArr[$counter]=trim(fgets($theFile));
-  // name = $outArr[0];
-  // animal = $outArr[1];
-  // brithplace = $outArr[2];
-  // sex = $outArr[3];
-  // Hobbie = $outArr[4];
-  // Zoddic = $outArr[5];
-  // Alive = $outArr[6];
-  $counter++;
-}
+session_start();
 
-fclose($theFile);
+$currentId = $_SESSION['userID'];
+$uName = $_SESSION['username'];
+// $pet = $_SEESION['currentPet']
+//echo $uName;
 
-// // name
-// $temp=$outArr[0];
 
+?>
+
+<?php
+//check if there has been something posted to the server to be processed
+if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["sendReason"]) && ($_GET["sendReason"] == "gameStart"))
+{
+//  echo("IN GET");
+  try
+  {
+    /**************************************
+    * Create databases and                *
+    * open connections                    *
+    **************************************/
+
+    // Create (connect to) SQLite database in file
+  $file_db = new PDO('sqlite:../db/netLife.db');
+  // Set errormode to exceptions
+  /* .. */
+  $file_db->setAttribute(PDO::ATTR_ERRMODE,
+                          PDO::ERRMODE_EXCEPTION);
+
+ //echo($artistOptions[0]);
+  $getData="SELECT * FROM aninmalCollection WHERE uid ='$currentId' AND active ='true'";
+
+ // go through the options there could be multiple ...
+
+
+
+$result = $file_db->query($getData);
+ if (!$result) die("Cannot execute query.");
+ $row = $result->fetch(PDO::FETCH_ASSOC);
+  $myJSONObj = json_encode($row);
+  echo $myJSONObj;
+
+// // NOW WE WANT TO SEND THE RESULT AS A JSON STRING BACK TO CLIENT::
 //
-    // var_dump($outArr);
-    // Now we want to JSON encode these values to send them to $.ajax success.
-  //  $myJSONObj = json_encode($outArr);
-    // echo $myJSONObj;
+// // get a row...
+// // MAKE AN ARRAY::
+// $res = array();
+// $i=0;
+// while($row = $result->fetch(PDO::FETCH_ASSOC))
+// {
+//   // note the result from SQLitE is ALREADy ASSOCIATIVE
+//   $res[$i] = $row;
+//   $i++;
+// }//end while
+// // endcode the resulting array as JSON
+// $myJSONObj = json_encode($res);
+// echo $myJSONObj;
+}
+catch(PDOException $e) {
+  // Print PDOException message
+  echo $e->getMessage();
+
+}
+exit;
+
+}
+else if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["sendReason"])&&($_GET["sendReason"] == "gameUpdate"))
+
+{
+  try
+  {
+    /**************************************
+    * Create databases and                *
+    * open connections                    *
+    **************************************/
+
+    // Create (connect to) SQLite database in file
+  $file_db = new PDO('sqlite:../db/netLife.db');
+  // Set errormode to exceptions
+  /* .. */
+  $file_db->setAttribute(PDO::ATTR_ERRMODE,
+                          PDO::ERRMODE_EXCEPTION);
+  //echo($_GET["bugsTotal"]);
+  $bugCount = $file_db->quote($_GET["bugsTotal"]);
+  $sql_update="UPDATE aninmalCollection SET bugs = $bugCount WHERE uID = '$currentId' AND active = 'true'";
+      // again we do error checking when we try to execute our SQL statements on the db
+    $file_db ->exec($sql_update);
+    }
+
+
+catch(PDOException $e) {
+  // Print PDOException message
+  echo $e->getMessage();
+
+}
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,48 +120,48 @@ fclose($theFile);
 <p class="table">Animal:</p>
 </div>
 <div id="NameTable" class="table">
-  <p class="table">
-<?php echo($outArr[1]);?>
+  <p id = "animalSpecies" class="table">
+    DUD
 </p>
 </div>
 <div class="table">
 <p class="table">Name:</p>
 </div>
 <div class="table">
-  <p class="table">
-  <?php echo($outArr[0]);?>
+  <p id = "animalName" class="table">
+  DUD
   </p>
 </div>
 <div class="table">
 <p class="table">Sex:</p>
 </div>
 <div class="table">
-  <p class="table">
-  <?php echo($outArr[3]); ?>
+  <p id = "animalSex" class="table">
+  DUD
   </p>
 </div>
 <div class="table">
 <p class="table">Birthplace:</p>
 </div>
 <div class="table">
-  <p class="table">
-  <?php echo($outArr[2]); ?>
+  <p id = "animalCountry" class="table">
+  DUD
   </p>
 </div>
 <div class="table">
 <p class="table">Hobbie:</p>
 </div>
 <div class="table">
-  <p class="table">
-  <?php echo($outArr[4]); ?>
+  <p id = "animalHobbie" class="table">
+  DUD
   </p>
 </div>
 <div class="table">
 <p class="table">Zodiac:</p>
 </div>
 <div class="table">
-  <p class="table">
-  <?php echo($outArr[5]); ?>
+  <p id = "animalZodiac" class="table">
+
   </p>
 </div>
   </div>
@@ -128,5 +199,10 @@ fclose($theFile);
 
 </div>
 </div>
+<!-- <script>
+$(document).ready (function(){
+
+});
+</script> -->
 </body>
 </html>

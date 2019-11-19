@@ -32,7 +32,7 @@ try {
     $file_db->setAttribute(PDO::ATTR_ERRMODE,
                             PDO::ERRMODE_EXCEPTION);
 
-                            $sql_select='SELECT * FROM username';
+                            $sql_select='SELECT * FROM aninmalCollection';
                             // the result set
                             $result = $file_db->query($sql_select);
                             if (!$result) die("Cannot execute query.");
