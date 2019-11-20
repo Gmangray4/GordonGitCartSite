@@ -34,14 +34,7 @@ $zodiac = $animals["Zodiac"];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if(isset($_POST["submitted"])){
- // $theFile = fopen("savefile/animalfile.txt", "w") or die("Unable to open");
-// fwrite($theFile,$animalNames[rand (0 ,count($animalNames)-1)]."\n");
-// fwrite($theFile,$species[rand (0 ,count($species)-1)]."\n");
-// fwrite($theFile,$brithplace[rand (0 ,count($brithplace)-1)]."\n");
-// fwrite($theFile,$sex[rand (0 ,count($sex)-1)]."\n");
-// fwrite($theFile,$hobbies[rand (0 ,count($hobbies)-1)]."\n");
-// fwrite($theFile,$zodiac[rand (0 ,count($zodiac)-1)]."\n");
-// fwrite($theFile,"Alive");
+
 // header("Location: game.php");
 
 $aniName = $animalNames[rand (0 ,count($animalNames)-1)];
@@ -82,7 +75,7 @@ try {
 
      echo "false";
 
-      $queryInsert = "INSERT INTO aninmalCollection (name,species,country ,gender,hobbies,zodiac,HP, bugs, suffering, sufferCon, lifeStatus, active, owner, uID) VALUES ('$aniName', '$specType','$homeland','$gender','$hobbie','$zSign','100','0','0', 'fine', 'good','true', '$uName',  '$currentId' )";
+      $queryInsert = "INSERT INTO aninmalCollection (name,species,country ,gender,hobbies,zodiac,HP, bugs, suffering, active, owner, uID) VALUES ('$aniName', '$specType','$homeland','$gender','$hobbie','$zSign','100','1','0', 'true', '$uName',  '$currentId' )";
       $file_db->exec($queryInsert);
 
    }else {
@@ -92,7 +85,7 @@ try {
     $file_db ->exec($sql_update);
 
 
-     $queryInsert = "INSERT INTO aninmalCollection (name,species,country ,gender,hobbies,zodiac,HP, bugs, suffering, sufferCon, lifeStatus, active, owner, uID) VALUES ('$aniName', '$specType','$homeland','$gender','$hobbie','$zSign','100','0','0', 'fine', 'good','true', '$uName',  '$currentId' )";
+     $queryInsert = "INSERT INTO aninmalCollection (name,species,country ,gender,hobbies,zodiac,HP, bugs, suffering, active, owner, uID) VALUES ('$aniName', '$specType','$homeland','$gender','$hobbie','$zSign','100','0','0', 'true', '$uName',  '$currentId' )";
      $file_db->exec($queryInsert);
      echo ("true");
    }
@@ -105,7 +98,7 @@ try {
   }
 
  //echo("done");
- // header("Location: game.php");
+  header("Location: game.php");
  exit;
 }
 

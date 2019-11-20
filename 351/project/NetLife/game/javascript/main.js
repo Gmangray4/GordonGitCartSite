@@ -4,6 +4,10 @@ let hp = 100;
   // <?php  ?>
 //Jquarly elements
 let $status;
+let $aniImage;
+
+let animalType;
+let petName;
 
 let alive;
 let peaceDeath = null;
@@ -32,16 +36,20 @@ let arrayIdsHeart = [];
 let arrayIdsLungs = [];
 
 let suffering = 0;
-let sufferingState = "fine";
+// let sufferingState = "fine";
 let lifeState = "good";
+
+let state;
+
+let timer;
+let damageTimer;
 
 $(document).ready(setup);
 function setup() {
 $status = $('#status');
-
+$aniImage = $('#aniImage');
 getInitialdata();
-condition();
-bugsUpdate();
+// condition();
 
 }
 
@@ -126,18 +134,18 @@ if(lungsToggle == false) {
 
 // update bugs
 function bugsUpdate(){
-  // bugsTotal += Math.floor((Math.random() * 4));
 
-  // let bugBucket =  bugsTotal;
-  // bugsBrain += Math.floor((Math.random() * bugBucket));
-  // bugBucket -= bugsBrain;
-  // bugsHeart += Math.floor((Math.random() * bugBucket));
-  // bugBucket -= bugsHeart;
-  // bugsLungs += bugBucket;
-
-
-
-   console.log(suffering);
+   let bugBucket =  bugsTotal;
+   bugsBrain += Math.floor((Math.random() * bugBucket));
+   bugBucket -= bugsBrain;
+   bugsHeart += Math.floor((Math.random() * bugBucket));
+   bugBucket -= bugsHeart;
+   bugsLungs += bugBucket;
+   console.log(bugsTotal);
+   console.log(bugsBrain);
+   console.log(bugsHeart);
+   console.log(bugsLungs);
+   //console.log(suffering);
 }
 
 // displaying the bugs in the brain window
@@ -332,11 +340,11 @@ function bugCreateL(){
 
 // function for damage calcatltion with the pet
 function damage(){
+  bugsTotal += Math.floor((Math.random() * 4));
   hp -= bugsTotal;
   suffering += bugsTotal*2;
-  console.log(hp);
+  bugsUpdate();
   condition();
-  console.log(suffering);
 }
 
 // function for pets codition.
@@ -344,31 +352,39 @@ function condition() {
   sufferCond();
   if (hp >= 51) {
 $("#status").text('Good');
-state = "good";
+state = "Good";
+aniDisplay();
   }
   if (hp <= 50 && hp >= 26) {
 $("#status").text('Okay');
-state = "okay";
+state = "Okay";
+aniDisplay();
   }
   if (hp <= 25 && hp >= 1) {
 $("#status").text('Poor');
-state = "poor";
+state = "Poor";
+aniDisplay();
   }
   if (hp <= 0 && suffering <= 0) {
 $("#status").text('RIP');
 peaceDeath = true;
 alive = false;
 deathWindow();
+clearInterval(timer);
+clearInterval(damageTimer);
   }
   if (hp <= 0 && suffering >= 1) {
 $("#status").text('RIP');
 peaceDeath = false;
 alive= false;
 deathWindow();
+clearInterval(timer);
+clearInterval(damageTimer);
   }
 }
 // function for when the pet dies
 function deathWindow(){
+
   let div = document.createElement("div");
   div.className = "DeathPW";
   let id = "DeathWindow";
@@ -378,23 +394,34 @@ function deathWindow(){
 
 if (peaceDeath == true) {
   $("#DeathWindow").html(
-      '<h2 class="Dead">RIP</h2><h3  class="Dead"> <?php echo($outArr[0]);?> Passed on Peacefully!</h3><img class="DeadImg"src="images/placeHolder.jpg" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that <?php echo($outArr[0]);?> has moved on peacefully!<br><br>Although <?php echo($outArr[0]);?> maybe gone now, <?php echo($outArr[0]);?> knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+      '<h2 class="Dead">RIP</h2><h3  class="Dead">'+petName+' Passed moved on Peacefully!</h3><img class="DeadImg"src="images/animal/'+animalType+'_dead.gif" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that '+petName+' has moved on peacefully!<br><br>Although '+petName+' maybe gone now, '+petName+' knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
     );
 }
 if (peaceDeath == false) {
   $("#DeathWindow").html(
-    '<h2 class="Dead">RIP</h2><h3 class="Dead"> <?php echo($outArr[0]);?> Passed on Painfully!</h3><img class="DeadImg"src="images/gravestone.png" alt="Place Holder image"><br><p class="DeathPW"><?php echo($outArr[0]);?> has moved on but not peacefully!<br><br>Unfortunately <?php echo($outArr[0]);?> is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+    '<h2 class="Dead">RIP</h2><h3 class="Dead">'+petName+' Passed on Painfully!</h3><img class="DeadImg"src="images/gravestone.png" alt="Place Holder image"><br><p class="DeathPW">'+petName+' has moved on but not peacefully!<br><br>Unfortunately '+petName+' is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
   );
 }
 }
 
 function sufferCond(){
   if (suffering >= 1) {
-    aniSuffering = "pain";
+    aniSuffering = "Pain";
+    aniDisplay();
   }else {
-    aniSuffering = "fine";
+    aniSuffering = "Fine";
+    aniDisplay();
   }
 }
+
+function aniDisplay(){
+  console.log(state);
+  console.log(aniSuffering);
+  console.log(animalType);
+  document.getElementById("aniImage").src="images/animal/"+animalType+state+aniSuffering+
+    ".gif";
+}
+
 
 function getInitialdata() {
   console.log("data loading");
@@ -417,45 +444,39 @@ function getInitialdata() {
     hp = parseInt(animal.HP);
     bugsTotal = parseInt(animal.bugs);
     suffering = parseInt(animal.suffering);
-    sufferingState = (animal.sufferCon);
-    lifeState = (animal.lifeStatus);
-    alive = (animal.active);
 
-    // bugsUpdate();
-    let bugBucket =  bugsTotal;
-    bugsBrain += Math.floor((Math.random() * bugBucket));
-    bugBucket -= bugsBrain;
-    bugsHeart += Math.floor((Math.random() * bugBucket));
-    bugBucket -= bugsHeart;
-    bugsLungs += bugBucket;
-    console.log(bugsTotal);
-    console.log(bugsBrain);
-    console.log(bugsHeart);
-    console.log(bugsLungs);
+    alive = (animal.active);
+    animalType = (animal.species);
+    petName = (animal.name);
+
+    bugsUpdate();
+    // let bugBucket =  bugsTotal;
+    // bugsBrain += Math.floor((Math.random() * bugBucket));
+    // bugBucket -= bugsBrain;
+    // bugsHeart += Math.floor((Math.random() * bugBucket));
+    // bugBucket -= bugsHeart;
+    // bugsLungs += bugBucket;
+    // console.log(bugsTotal);
+    // console.log(bugsBrain);
+    // console.log(bugsHeart);
+    // console.log(bugsLungs);
+    // // aniDisplay();
+    condition();
   }
 
-  setInterval(function(){ sendData() }, 3000);
+  timer = setInterval(function(){ sendData() }, 3000);
+  damageTimer = setInterval(function(){ damage() }, 9000000);
   function sendData(){
     console.log("interval running");
-    let dataToSend ={
-      sendReason:"gameUpdate",
-       bugCount:bugsTotal,
-       heath: hp,
-       SuferI:suffering,
-       SuferC:sufferingState,
-       lifeS: lifeState,
-       living:alive
-     };
-    $.get("game.php",  {"sendReason":"gameUpdate","bugsTotal":JSON.stringify(bugsTotal)}, function(response)
+    condition();
+    $.get("game.php",  {"sendReason":"gameUpdate","bugsTotal":JSON.stringify(bugsTotal),"health":JSON.stringify(hp),"suffering":JSON.stringify(suffering)}, function(response)
     {
       console.log(response);
       //let parsedResponse = JSON.parse(response);
     //  console.log(parsedResponse);
     });
-    $.get("game.php",  {"sendReason":"gameUpdate","hp":JSON.stringify(hp)}, function(response){console.log(response);});
-    $.get("game.php",  {"sendReason":"gameUpdate","suffering":JSON.stringify(suffering)}, function(response) { console.log(response);});
-    $.get("game.php",  {"sendReason":"gameUpdate","sufferingState":JSON.stringify(sufferingState)}, function(response){console.log(response);});
-    $.get("game.php",  {"sendReason":"gameUpdate","lifeState":JSON.stringify(lifeState)}, function(response) { console.log(response);});
-    $.get("game.php",  {"sendReason":"gameUpdate","alive":JSON.stringify(alive)}, function(response) { console.log(response);});
+  //  $.get("game.php",  {"sendReason":"gameUpdate","hp":JSON.stringify(hp)}, function(response){console.log(response);});
+  //  $.get("game.php",  {"sendReason":"gameUpdate","suffering":JSON.stringify(suffering)}, function(response) { console.log(response);});
+   // $.get("game.php",  {"sendReason":"gameUpdate","alive":JSON.stringify(alive)}, function(response) { console.log(response);});
   }
 }

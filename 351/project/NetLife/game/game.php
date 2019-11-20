@@ -34,29 +34,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["sendReason"]) && ($_GET["
 
  // go through the options there could be multiple ...
 
-
-
 $result = $file_db->query($getData);
  if (!$result) die("Cannot execute query.");
  $row = $result->fetch(PDO::FETCH_ASSOC);
   $myJSONObj = json_encode($row);
   echo $myJSONObj;
 
-// // NOW WE WANT TO SEND THE RESULT AS A JSON STRING BACK TO CLIENT::
-//
-// // get a row...
-// // MAKE AN ARRAY::
-// $res = array();
-// $i=0;
-// while($row = $result->fetch(PDO::FETCH_ASSOC))
-// {
-//   // note the result from SQLitE is ALREADy ASSOCIATIVE
-//   $res[$i] = $row;
-//   $i++;
-// }//end while
-// // endcode the resulting array as JSON
-// $myJSONObj = json_encode($res);
-// echo $myJSONObj;
 }
 catch(PDOException $e) {
   // Print PDOException message
@@ -85,8 +68,21 @@ else if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["sendReason"])&&($_GE
   //echo($_GET["bugsTotal"]);
   $bugCount = $file_db->quote($_GET["bugsTotal"]);
   $sql_update="UPDATE aninmalCollection SET bugs = $bugCount WHERE uID = '$currentId' AND active = 'true'";
+  $health = $file_db->quote($_GET["health"]);
+  $sql_updateHP="UPDATE aninmalCollection SET HP = $health WHERE uID = '$currentId' AND active = 'true'";
+
+
+ $suffering = $file_db->quote($_GET["suffering"]);
+$sql_updateS="UPDATE aninmalCollection SET suffering = $suffering WHERE uID = '$currentId' AND active = 'true'";
+
+//  $hp = $file_db->quote($_GET["hp"]);
+//  $sql_updateHp="UPDATE aninmalCollection SET HP = $hp WHERE uID = '$currentId' AND active = 'true'";
+
       // again we do error checking when we try to execute our SQL statements on the db
     $file_db ->exec($sql_update);
+   $file_db ->exec($sql_updateS);
+   $file_db ->exec($sql_updateHP);
+   echo($suffering);
     }
 
 
@@ -166,7 +162,7 @@ catch(PDOException $e) {
 </div>
   </div>
 
-<img class="AnimalImg"src="images/<?php echo($outArr[1]);?>.gif" alt="Place Holder image">
+<img id = "aniImage" class="AnimalImg"src="images/<?php echo($outArr[1]);?>.gif" alt="Place Holder image">
 </div>
 
 <div class="hud">
