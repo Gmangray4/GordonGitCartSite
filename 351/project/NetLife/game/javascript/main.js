@@ -462,6 +462,14 @@ function getInitialdata() {
     // console.log(bugsLungs);
     // // aniDisplay();
     condition();
+    if (petName == null) {
+      deathWindow();
+      $("#DeathWindow").html(
+          '<h3 class="Dead">You have no pet!</h2><br><p class="DeathPW"> Please return to the main menu and start a new game!<br><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+        );
+        clearInterval(timer);
+        clearInterval(damageTimer);
+    }
   }
 
   timer = setInterval(function(){ sendData() }, 3000);

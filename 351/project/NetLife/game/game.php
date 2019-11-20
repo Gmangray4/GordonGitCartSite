@@ -162,7 +162,7 @@ catch(PDOException $e) {
 </div>
   </div>
 
-<img id = "aniImage" class="AnimalImg"src="images/<?php echo($outArr[1]);?>.gif" alt="Place Holder image">
+<img id = "aniImage" class="AnimalImg"src="images/<?php echo($outArr[1]);?>.gif" alt="You have no current pet! GO back and select NEW GAME!">
 </div>
 
 <div class="hud">
