@@ -117,7 +117,16 @@ try {
 <div>
 <div class="login">
   <div class="titleInfo">
-<p class="titleInfo">Here is the prototype of the game! Click new game to start.</p>
+    <!-- class="titleInfo" -->
+<h4 class="titleInfo">Welcome to Vet Pet <?php echo $uName; ?>! </h3>
+  <p class="titleInfo" >
+   You are taksed with removing virus from your pet every half hour.
+   Open the x-ray window by clicking on any of the following orgins: Brain, Heart, or Lungs and click on the green verius to remove them.
+   Remember to also let your pet rest, if you remain on the browser window for more then 15 minatues then your pet will suffer!
+<br><br>
+Yes your Vet pet is heavily ill and will not last a few more days. However, continue to log in every so often to remove viruses so that your pet does not suffer when it finely meets it's end.
+Are you responsibe to ensure your pet passes on peacefully?
+ </p>
   </div>
   <form class="main" action="title.php" method="post">
   <input type="hidden" name="submitted" value="submitted">
@@ -132,6 +141,9 @@ try {
 <form class="logOut" action="index.php">
   <input class="Continuebutt" type="submit" value="Log Out"/>
 </form>
+</div>
+<div class="">
+
 </div>
 </div>
 </body>

@@ -53,6 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
        else{
           $file_db =null;
          echo("NONE");
+
        }
 
      }
@@ -82,14 +83,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 <!--form done using more current tags... -->
 <form id="insertUser" action="">
 <!-- group the related elements in a form -->
-<h1 class="login">NetLife</h1>
+<h1 class="login">Vet Life</h1>
 <h3> Login in:</h3>
 <fieldset>
 <p><label>Login Username:</label><input type="text" size="24" maxlength = "40" name = "a_user" required></p>
 <p class = "sub"><input type = "submit" name = "submit" value = "Login" id ="buttonS" /></p>
  </fieldset>
 </form>
-
+<form action="Reg.php">
+  <input type="submit" value="Reg"/>
+</form>
 </div>
 <script>
 // here we put our JQUERY
@@ -116,10 +119,12 @@ $(document).ready (function(){
             console.log(response);
             if(response ==="NONE"){
             $("#error").text("No such user try again");
+            alert("There is no user with this username, try creaing an account or try a again.");
             }
-
-            else{
-            window.location = "title.php";
+            else if ("IN") {
+              window.location = "title.php";
+            }else{
+            // window.location = "title.php";
             }
            },
            error:function(){
