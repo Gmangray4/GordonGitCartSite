@@ -394,7 +394,7 @@ function deathWindow(){
 
 if (peaceDeath == true) {
   $("#DeathWindow").html(
-      '<h2 class="Dead">RIP</h2><h3  class="Dead">'+petName+' Passed moved on Peacefully!</h3><img class="DeadImg"src="images/animal/'+animalType+'_dead.gif" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that '+petName+' has moved on peacefully!<br><br>Although '+petName+' maybe gone now, '+petName+' knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Main Menu"/></form></p>'
+      '<h2 class="Dead">RIP</h2><h3  class="Dead">'+petName+' Passed on Peacefully!</h3><img class="DeadImg"src="images/animal/'+animalType+'_dead.gif" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that '+petName+' has moved on peacefully!<br><br>Although '+petName+' maybe gone now, '+petName+' knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Main Menu"/></form></p>'
     );
 }
 if (peaceDeath == false) {
