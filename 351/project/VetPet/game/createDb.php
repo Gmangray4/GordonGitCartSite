@@ -8,7 +8,7 @@
       **************************************/
 
       // Create (connect to) SQLite database in file
-      $file_db = new PDO('sqlite:../db/netLife.db');
+      $file_db = new PDO('sqlite:../db/vetpet.db');
       // Set errormode to exceptions
       /* .. */
       $file_db->setAttribute(PDO::ATTR_ERRMODE,

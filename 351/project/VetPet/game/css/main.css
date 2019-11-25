@@ -304,3 +304,14 @@ img.DeadImg{
 
   margin-top: 0px;
 }
+
+form.login1{
+  margin-left: 2px;
+  padding-bottom: 5px;
+}
+
+img.title{
+  height: 25%;
+  width: 15%;
+  margin-left: 8%;
+}

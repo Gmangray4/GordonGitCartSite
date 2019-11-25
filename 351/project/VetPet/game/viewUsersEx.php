@@ -26,7 +26,7 @@ try {
     **************************************/
 
     // Create (connect to) SQLite database in file
-    $file_db = new PDO('sqlite:../db/netLife.db');
+    $file_db = new PDO('sqlite:../db/vetpet.db');
     // Set errormode to exceptions
     /* .. */
     $file_db->setAttribute(PDO::ATTR_ERRMODE,
@@ -41,7 +41,12 @@ try {
   // $row = $result->fetch(PDO::FETCH_ASSOC);
   // var_dump($row);
 
-  echo "<h3> All User Acounts Results:::</h3>";
+  echo"<div class='topInfo'>";
+echo"<form class='topInfo' action='title.php'><input class='topInfo' type='submit' value='Main Menu'/></form>";
+  echo "</div>";
+
+
+  echo "<h3> All Vet Pets Across The Globe:</h3>";
   echo"<div id='back'>";
   // get a row...
   while($row = $result->fetch(PDO::FETCH_ASSOC))

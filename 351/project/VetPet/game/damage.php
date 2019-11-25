@@ -10,7 +10,7 @@ try
     **************************************/
 
     // Create (connect to) SQLite database in file
-  $file_db = new PDO('sqlite:../db/netLife.db');
+  $file_db = new PDO('sqlite:../db/vetpet.db');
   // Set errormode to exceptions
   /* .. */
   $file_db->setAttribute(PDO::ATTR_ERRMODE,
@@ -31,8 +31,16 @@ $result = $file_db->query($getData);
    $newbug = $bug + rand(1,5);
    $sufferingC = intval($row["suffering"]);
 
-   $newHp = $hpCurrent - $newbug;
-   $newSuffering = $sufferingC + ($newbug*2);
+   if ($hpCurrent >= 1) {
+     $newHp = $hpCurrent - $newbug;
+     $newSuffering = $sufferingC + ($newbug*2);
+   }else {
+     $newHp = 0;
+     $newSuffering = $sufferingC;
+     $newbug = $bug;
+   }
+   // $newHp = $hpCurrent - $newbug;
+   // $newSuffering = $sufferingC + ($newbug*2);
 
    $Id = $row['uID'];
    //echo("new S".$newbug);

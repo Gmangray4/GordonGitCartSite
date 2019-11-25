@@ -1,3 +1,7 @@
+body{
+  background-color: black;
+}
+
 / css for the initial form/
 label{display:inline-block; width:30%;font-size:1vw; font-weight: bold; align: center; margin-top:1%;}
 textarea{vertical-align: top;width:50%;margin-left:2%;}
@@ -7,8 +11,25 @@ fieldset{background-color:#c1fcb3;width:50%;color:#555;font-family:arial;margin:
 .sub{background:#c1fcb3;padding:2%;}
 h3{text-align: center; width:50%;font-family:arial;color:white;margin:0 auto; margin-top:5%;}
 / css for displaying the output/
-.outer h3{font-size:16px;color:green;font-family:arial;font-style:bold;}
-.outer{background-color:green;margin:0 auto;margin-top:2%;padding-bottom:2%; width:50%;overflow:hidden;}
-.content{background-color:green;width:75%; margin:0 auto;padding:2%; margin-top:1%;}
+.outer h3{font-size:16px;color:red;font-family:arial;font-style:bold;}
+.outer{background-color:red;margin:0 auto;margin-top:2%;padding-bottom:2%; width:50%;overflow:hidden;}
+.content{background-color:red;width:75%; margin:0 auto;padding:2%; margin-top:1%;}
 .content p{padding:2%;background:#c1fcb3;font-family:arial;}
 img{margin:2%;width:96%;}
+
+div.topInfo{
+  /* background-color: purple; */
+  height: 10%;
+}
+
+form.topInfo{
+  float: right;
+  margin-top: 1.1em;
+  margin-right: 4.5%;
+  border-style: solid;
+  border-color: red;
+}
+input.topInfo{
+    background-color: orange;
+    width: 100%;
+}

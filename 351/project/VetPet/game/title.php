@@ -51,7 +51,7 @@ try {
     **************************************/
 
     // Create (connect to) SQLite database in file
-    $file_db = new PDO('sqlite:../db/netLife.db');
+    $file_db = new PDO('sqlite:../db/vetpet.db');
     // Set errormode to exceptions
     /* .. */
     $file_db->setAttribute(PDO::ATTR_ERRMODE,
@@ -111,7 +111,7 @@ try {
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src = "jquery/jquery-3.4.1.js"></script>
     <script src = "javascript/main.js"></script>
-    <title>NetLife</title>
+    <title>VetLife</title>
   </head>
 <body>
 <div>
@@ -120,12 +120,12 @@ try {
     <!-- class="titleInfo" -->
 <h4 class="titleInfo">Welcome to Vet Pet <?php echo $uName; ?>! </h3>
   <p class="titleInfo" >
-   You are taksed with removing virus from your pet every half hour.
-   Open the x-ray window by clicking on any of the following orgins: Brain, Heart, or Lungs and click on the green verius to remove them.
-   Remember to also let your pet rest, if you remain on the browser window for more then 15 minatues then your pet will suffer!
+   You are tasked with removing viruses from your Vet Pet every half hour.
+   Open the x-ray window by clicking on any of the following orgins: Brain, Heart, or Lungs and click on the green viruses to remove them.
+   Remember to also let your pet rest, if you remain on the browser window for more then 15 minutes then your pet will suffer!
 <br><br>
-Yes your Vet pet is heavily ill and will not last a few more days. However, continue to log in every so often to remove viruses so that your pet does not suffer when it finely meets it's end.
-Are you responsibe to ensure your pet passes on peacefully?
+Yes your Vet Pet is heavily ill and will not last a few more days. However, continue to log in every so often to remove viruses so that your pet does not suffer when it finely meets it's end.
+Are you responsible to ensure that your pet passes on peacefully?
  </p>
   </div>
   <form class="main" action="title.php" method="post">
@@ -135,8 +135,8 @@ Are you responsibe to ensure your pet passes on peacefully?
   <form class="main" action="game.php">
     <input class="Continuebutt" type="submit" value="Continue"/>
 </form>
-<form class="main" action="states.php">
-  <input class="Continuebutt" type="submit" value="States"/>
+<form class="main" action="viewUsersEx.php">
+  <input class="Continuebutt" type="submit" value="All Vet Pets"/>
 </form>
 <form class="logOut" action="index.php">
   <input class="Continuebutt" type="submit" value="Log Out"/>

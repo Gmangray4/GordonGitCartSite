@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["sendReason"]) && ($_GET["
     **************************************/
 
     // Create (connect to) SQLite database in file
-  $file_db = new PDO('sqlite:../db/netLife.db');
+  $file_db = new PDO('sqlite:../db/vetpet.db');
   // Set errormode to exceptions
   /* .. */
   $file_db->setAttribute(PDO::ATTR_ERRMODE,
@@ -60,7 +60,7 @@ else if($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET["sendReason"])&&($_GE
     **************************************/
 
     // Create (connect to) SQLite database in file
-  $file_db = new PDO('sqlite:../db/netLife.db');
+  $file_db = new PDO('sqlite:../db/vetpet.db');
   // Set errormode to exceptions
   /* .. */
   $file_db->setAttribute(PDO::ATTR_ERRMODE,
@@ -106,7 +106,7 @@ catch(PDOException $e) {
 
 <div id="mainDiv" class="main" >
   <div class="topInfo">
-<form class="topInfo" action="title.php"><input class="topInfo" type="submit" value="Home"/></form>
+<form class="topInfo" action="title.php"><input class="topInfo" type="submit" value="Main Menu"/></form>
   </div>
 <div class="animalDisplay">
 
@@ -180,8 +180,8 @@ catch(PDOException $e) {
   </div>
 
 </div>
-  <button type="button" name="button" onclick="bugsUpdate()">AddBug</button>
-  <button style="margin: 0" type="button" name="button" onclick="damage()">Damage</button>
+  <!-- <button type="button" name="button" onclick="bugsUpdate()">AddBug</button>
+  <button style="margin: 0" type="button" name="button" onclick="damage()">Damage</button> -->
 </div>
 <div class="hudSections">
 <button class="Hudbutt"type="button" name="ButtBrain" onclick="brainCheck()"> Brain</button>

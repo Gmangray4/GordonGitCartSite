@@ -238,7 +238,7 @@ function bugCreateB(){
       img.remove();
       bugsBrain -= 1;
       bugsTotal -= 1;
-      suffering -= 5;
+      suffering -= 10;
     })
     BrainWindow.appendChild(img);
   }
@@ -285,7 +285,7 @@ function bugCreateH(){
       img.remove();
       bugsHeart -= 1;
       bugsTotal -= 1;
-      suffering -= 5;
+      suffering -= 10;
     })
     HeartWindow.appendChild(img);
   }
@@ -332,7 +332,7 @@ function bugCreateL(){
       img.remove();
       bugsLungs -= 1;
       bugsTotal -= 1;
-      suffering -= 5;
+      suffering -= 10;
     })
     LungsWindow.appendChild(img);
   }
@@ -394,12 +394,12 @@ function deathWindow(){
 
 if (peaceDeath == true) {
   $("#DeathWindow").html(
-      '<h2 class="Dead">RIP</h2><h3  class="Dead">'+petName+' Passed moved on Peacefully!</h3><img class="DeadImg"src="images/animal/'+animalType+'_dead.gif" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that '+petName+' has moved on peacefully!<br><br>Although '+petName+' maybe gone now, '+petName+' knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+      '<h2 class="Dead">RIP</h2><h3  class="Dead">'+petName+' Passed moved on Peacefully!</h3><img class="DeadImg"src="images/animal/'+animalType+'_dead.gif" alt="Place Holder image"><br><p class="DeathPW">You have successfully and responsibly insured that '+petName+' has moved on peacefully!<br><br>Although '+petName+' maybe gone now, '+petName+' knows that you were their for them until the very end.<br><br>Thank you very being a responsibly vet!<br><br>Your the Best!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Main Menu"/></form></p>'
     );
 }
 if (peaceDeath == false) {
   $("#DeathWindow").html(
-    '<h2 class="Dead">RIP</h2><h3 class="Dead">'+petName+' Passed on Painfully!</h3><img class="DeadImg"src="images/gravestone.png" alt="Place Holder image"><br><p class="DeathPW">'+petName+' has moved on but not peacefully!<br><br>Unfortunately '+petName+' is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+    '<h2 class="Dead">RIP</h2><h3 class="Dead">'+petName+' Passed on Painfully!</h3><img class="DeadImg"src="images/gravestone.png" alt="Place Holder image"><br><p class="DeathPW">'+petName+' has moved on but not peacefully!<br><br>Unfortunately '+petName+' is gone and has painfully passed on without your aid.<br><br> A good vet is responsibe!<br><br>A better friend is there until the end!<br><br>Good luck next time!</p><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Main Menu"/></form></p>'
   );
 }
 }
@@ -465,7 +465,7 @@ function getInitialdata() {
     if (petName == null) {
       deathWindow();
       $("#DeathWindow").html(
-          '<h3 class="Dead">You have no pet!</h2><br><p class="DeathPW"> Please return to the main menu and start a new game!<br><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Home"/></form></p>'
+          '<h3 class="Dead">You have no pet!</h2><br><p class="DeathPW"> Please return to the main menu and start a new game!<br><form class="main" action="title.php"><input class="Continuebutt" type="submit" value="Main Menu"/></form></p>'
         );
         clearInterval(timer);
         clearInterval(damageTimer);
