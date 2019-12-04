@@ -350,17 +350,17 @@ function damage(){
 // function for pets codition.
 function condition() {
   sufferCond();
-  if (hp >= 51) {
+  if (hp >= 151) {
 $("#status").text('Good');
 state = "Good";
 aniDisplay();
   }
-  if (hp <= 50 && hp >= 26) {
+  if (hp <= 150 && hp >= 76) {
 $("#status").text('Okay');
 state = "Okay";
 aniDisplay();
   }
-  if (hp <= 25 && hp >= 1) {
+  if (hp <= 75 && hp >= 1) {
 $("#status").text('Poor');
 state = "Poor";
 aniDisplay();

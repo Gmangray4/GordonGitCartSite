@@ -1,3 +1,4 @@
+#!/usr/bin/php -q
 <?php
 //check if there has been something posted to the server to be processed
 

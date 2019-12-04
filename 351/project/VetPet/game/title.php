@@ -75,7 +75,7 @@ try {
 
      echo "false";
 
-      $queryInsert = "INSERT INTO aninmalCollection (name,species,country ,gender,hobbies,zodiac,HP, bugs, suffering, active, owner, uID) VALUES ('$aniName', '$specType','$homeland','$gender','$hobbie','$zSign','100','1','0', 'true', '$uName',  '$currentId' )";
+      $queryInsert = "INSERT INTO aninmalCollection (name,species,country ,gender,hobbies,zodiac,HP, bugs, suffering, active, owner, uID) VALUES ('$aniName', '$specType','$homeland','$gender','$hobbie','$zSign','300','1','0', 'true', '$uName',  '$currentId' )";
       $file_db->exec($queryInsert);
 
    }else {
